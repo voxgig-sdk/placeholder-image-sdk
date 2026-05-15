@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "placeholder_image": {
+      "PLACEHOLDER_IMAGE00": {},
+      "PLACEHOLDER_IMAGE01": {},
+      "PLACEHOLDER_IMAGE02": {}
+    }
+  },
+  "new": {
+    "placeholder_image": {
+      "placeholder_image_ref01": {}
+    }
+  }
+}

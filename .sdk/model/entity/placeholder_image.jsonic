@@ -1,0 +1,56 @@
+# Entity: placeholder_image
+
+main: kit: entity: placeholder_image: {
+
+  alias: field: {}
+
+  name: "placeholder_image"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: 1
+                kind: "query"
+                name: "page"
+                orig: "page"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: "mountain"
+                kind: "query"
+                name: "q"
+                orig: "q"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/placeholder/url"
+          parts: [
+            "placeholder"
+            "url"
+          ]
+          select: {
+            exist: [
+              "page"
+              "q"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

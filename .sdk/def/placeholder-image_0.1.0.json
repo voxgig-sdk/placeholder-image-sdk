@@ -1,0 +1,144 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Placeholder Image API",
+    "description": "Provides downloadable placeholder images with caching capabilities. Users can fetch a binary image or a plain text URL based on specific keywords.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "API Support",
+      "url": "https://sodeom.com"
+    },
+    "termsOfService": "https://sodeom.com"
+  },
+  "externalDocs": {
+    "description": "API Documentation",
+    "url": "https://sodeom.com/apis/placeholder"
+  },
+  "servers": [
+    {
+      "url": "https://sodeom.com",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/placeholder": {
+      "get": {
+        "summary": "Get placeholder image",
+        "description": "Returns a binary placeholder image based on the provided keyword. Downloads and caches images in placeholders/ by SHA1 hash. If no image is found, serves static/not-found.png. If q parameter is missing, renders the placeholder help page.",
+        "operationId": "getPlaceholderImage",
+        "tags": [
+          "Placeholder Images"
+        ],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Image keyword (for example: mountain)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "mountain"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Pagination page (default 1, minimum 1)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Binary image data or help page HTML",
+            "content": {
+              "image/*": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "HTML help page when q parameter is missing"
+              }
+            }
+          },
+          "404": {
+            "description": "No image found, returns static/not-found.png",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/placeholder/url": {
+      "get": {
+        "summary": "Get placeholder image URL",
+        "description": "Returns a plain text image URL based on the provided keyword. Uses the same image fallback chain as /images endpoint.",
+        "operationId": "getPlaceholderImageUrl",
+        "tags": [
+          "Placeholder Images"
+        ],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Image keyword (for example: mountain)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "mountain"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Pagination page (default 1, minimum 1)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Plain text image URL",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "example": "https://example.com/images/mountain.jpg"
+              }
+            }
+          },
+          "404": {
+            "description": "No image found"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Placeholder Images",
+      "description": "Downloadable placeholder images with caching capabilities"
+    }
+  ]
+}

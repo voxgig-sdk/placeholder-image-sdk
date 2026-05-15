@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "placeholder": {
+      "PLACEHOLDER00": {},
+      "PLACEHOLDER01": {},
+      "PLACEHOLDER02": {}
+    }
+  },
+  "new": {
+    "placeholder": {
+      "placeholder_ref01": {}
+    }
+  }
+}

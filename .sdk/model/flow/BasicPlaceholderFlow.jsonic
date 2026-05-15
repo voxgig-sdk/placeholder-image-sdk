@@ -1,0 +1,28 @@
+# BasicPlaceholderFlow
+
+main: kit: flow: BasicPlaceholderFlow:
+{
+  entity: "placeholder",
+  kind: "basic",
+  name: "BasicPlaceholderFlow",
+  step: [
+    {
+      input: {
+        ref: "placeholder_ref01",
+        srcdatavar: "placeholder_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-placeholder_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPlaceholderFlow"
+}

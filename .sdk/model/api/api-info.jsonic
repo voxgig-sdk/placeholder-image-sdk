@@ -1,0 +1,25 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "API Support"
+        url: "https://sodeom.com"
+      }
+      description: "Provides downloadable placeholder images with caching capabilities. Users can fetch a binary image or a plain text URL based on specific keywords."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://sodeom.com"
+        }
+      ]
+      termsOfService: "https://sodeom.com"
+      title: "Placeholder Image API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}
