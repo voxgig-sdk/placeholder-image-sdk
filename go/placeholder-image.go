@@ -1,10 +1,10 @@
 package voxgigplaceholderimagesdk
 
 import (
-	"github.com/voxgig-sdk/placeholder-image-sdk/core"
-	"github.com/voxgig-sdk/placeholder-image-sdk/entity"
-	"github.com/voxgig-sdk/placeholder-image-sdk/feature"
-	_ "github.com/voxgig-sdk/placeholder-image-sdk/utility"
+	"github.com/voxgig-sdk/placeholder-image-sdk/go/core"
+	"github.com/voxgig-sdk/placeholder-image-sdk/go/entity"
+	"github.com/voxgig-sdk/placeholder-image-sdk/go/feature"
+	_ "github.com/voxgig-sdk/placeholder-image-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

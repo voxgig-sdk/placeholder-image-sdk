@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/placeholder-image-sdk"
+	sdk "github.com/voxgig-sdk/placeholder-image-sdk/go"
 )
 
 func TestExists(t *testing.T) {

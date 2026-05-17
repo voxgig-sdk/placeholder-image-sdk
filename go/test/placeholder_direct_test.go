@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/placeholder-image-sdk"
-	"github.com/voxgig-sdk/placeholder-image-sdk/core"
+	sdk "github.com/voxgig-sdk/placeholder-image-sdk/go"
+	"github.com/voxgig-sdk/placeholder-image-sdk/go/core"
 )
 
 func TestPlaceholderDirect(t *testing.T) {

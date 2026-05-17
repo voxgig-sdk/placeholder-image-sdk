@@ -1,9 +1,15 @@
 {
   "existing": {
     "placeholder_image": {
-      "PLACEHOLDER_IMAGE00": {},
-      "PLACEHOLDER_IMAGE01": {},
-      "PLACEHOLDER_IMAGE02": {}
+      "PLACEHOLDER_IMAGE00": {
+        "id": "PLACEHOLDER_IMAGE00"
+      },
+      "PLACEHOLDER_IMAGE01": {
+        "id": "PLACEHOLDER_IMAGE01"
+      },
+      "PLACEHOLDER_IMAGE02": {
+        "id": "PLACEHOLDER_IMAGE02"
+      }
     }
   },
   "new": {

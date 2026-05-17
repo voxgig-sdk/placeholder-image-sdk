@@ -1,9 +1,15 @@
 {
   "existing": {
     "placeholder": {
-      "PLACEHOLDER00": {},
-      "PLACEHOLDER01": {},
-      "PLACEHOLDER02": {}
+      "PLACEHOLDER00": {
+        "id": "PLACEHOLDER00"
+      },
+      "PLACEHOLDER01": {
+        "id": "PLACEHOLDER01"
+      },
+      "PLACEHOLDER02": {
+        "id": "PLACEHOLDER02"
+      }
     }
   },
   "new": {

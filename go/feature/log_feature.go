@@ -4,7 +4,7 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/voxgig-sdk/placeholder-image-sdk/core"
+	"github.com/voxgig-sdk/placeholder-image-sdk/go/core"
 )
 
 type LogFeature struct {

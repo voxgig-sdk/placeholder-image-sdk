@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/placeholder-image-sdk/core"
+import "github.com/voxgig-sdk/placeholder-image-sdk/go/core"
 
 func featureAddUtil(ctx *core.Context, f core.Feature) {
 	client := ctx.Client
