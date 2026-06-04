@@ -18,8 +18,24 @@ main: {
       termsOfService: "https://sodeom.com"
       title: "Placeholder Image API"
       version: "1.0.0"
+      tagline: "Fetch keyword-based placeholder images as binary downloads or plain-text URLs"
+      homepage: "https://sodeom.com"
+      docs_url: "https://sodeom.com/apis/placeholder"
+      about_md: `The Placeholder Image API is a small image-lookup service exposed by [Sodeom](https://sodeom.com), a privacy-focused search engine. Given a keyword, it returns a downloadable placeholder image (or a plain-text URL pointing to one) suitable for filling in mockups, demos, and content scaffolding.
+
+What you get from the API:
+
+- \`GET /placeholder\` returns a binary image matching a keyword.
+- \`GET /placeholder/url\` returns the same image as a plain-text URL.
+- A \`q\` query parameter (e.g. \`?q=mountain\`) drives the image selection, and an optional \`page\` parameter paginates results.
+- A fallback image is served when no match is found, and a help page is rendered when \`q\` is omitted.
+
+Operational notes: CORS is enabled, requests use HTTP \`GET\` only, and responses can be slow (average response time around 5 seconds in community measurements). Results are cached server-side under a \`placeholders/\` directory keyed by SHA1 hash, so repeated queries for the same keyword are served from cache.`
+      entity_desc: {
+        placeholder: "A keyword-driven placeholder image lookup, exposed via `GET /placeholder` (binary image) and `GET /placeholder/url` (plain-text URL)."
+        placeholder_image: "The image resource itself, selected by the `q` keyword parameter and optionally paged via `page`."
+      }
+      auth: false
     }
   }
-}
-
 }

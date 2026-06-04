@@ -73,14 +73,12 @@ function placeholder_image_direct_setup($mockres)
     $env = Runner::env_override([
         "PLACEHOLDERIMAGE_TEST_PLACEHOLDER_IMAGE_ENTID" => [],
         "PLACEHOLDERIMAGE_TEST_LIVE" => "FALSE",
-        "PLACEHOLDERIMAGE_APIKEY" => "NONE",
     ]);
 
     $live = $env["PLACEHOLDERIMAGE_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["PLACEHOLDERIMAGE_APIKEY"],
         ];
         $client = new PlaceholderImageSDK($merged_opts);
         return [

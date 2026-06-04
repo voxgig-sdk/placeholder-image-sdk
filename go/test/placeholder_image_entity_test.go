@@ -117,7 +117,6 @@ func placeholder_imageBasicSetup(extra map[string]any) *entityTestSetup {
 		"PLACEHOLDERIMAGE_TEST_PLACEHOLDER_IMAGE_ENTID": idmap,
 		"PLACEHOLDERIMAGE_TEST_LIVE":      "FALSE",
 		"PLACEHOLDERIMAGE_TEST_EXPLAIN":   "FALSE",
-		"PLACEHOLDERIMAGE_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["PLACEHOLDERIMAGE_TEST_PLACEHOLDER_IMAGE_ENTID"])
@@ -128,7 +127,6 @@ func placeholder_imageBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["PLACEHOLDERIMAGE_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["PLACEHOLDERIMAGE_APIKEY"],
 			},
 			extra,
 		})

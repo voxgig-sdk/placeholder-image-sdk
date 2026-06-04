@@ -91,7 +91,6 @@ function placeholder_image_basic_setup(extra)
     ["PLACEHOLDERIMAGE_TEST_PLACEHOLDER_IMAGE_ENTID"] = idmap,
     ["PLACEHOLDERIMAGE_TEST_LIVE"] = "FALSE",
     ["PLACEHOLDERIMAGE_TEST_EXPLAIN"] = "FALSE",
-    ["PLACEHOLDERIMAGE_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -103,7 +102,6 @@ function placeholder_image_basic_setup(extra)
   if env["PLACEHOLDERIMAGE_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["PLACEHOLDERIMAGE_APIKEY"],
       },
       extra or {},
     })

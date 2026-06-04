@@ -82,7 +82,6 @@ def placeholder_basic_setup(extra)
     "PLACEHOLDERIMAGE_TEST_PLACEHOLDER_ENTID" => idmap,
     "PLACEHOLDERIMAGE_TEST_LIVE" => "FALSE",
     "PLACEHOLDERIMAGE_TEST_EXPLAIN" => "FALSE",
-    "PLACEHOLDERIMAGE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +93,6 @@ def placeholder_basic_setup(extra)
   if env["PLACEHOLDERIMAGE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["PLACEHOLDERIMAGE_APIKEY"],
       },
       extra || {},
     ])
