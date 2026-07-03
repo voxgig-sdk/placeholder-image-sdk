@@ -1,21 +1,8 @@
 # PlaceholderImage SDK
 
-Fetch keyword-based placeholder images as binary downloads or plain-text URLs
+Placeholder Image API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Placeholder Image API
-
-The Placeholder Image API is a small image-lookup service exposed by [Sodeom](https://sodeom.com), a privacy-focused search engine. Given a keyword, it returns a downloadable placeholder image (or a plain-text URL pointing to one) suitable for filling in mockups, demos, and content scaffolding.
-
-What you get from the API:
-
-- `GET /placeholder` returns a binary image matching a keyword.
-- `GET /placeholder/url` returns the same image as a plain-text URL.
-- A `q` query parameter (e.g. `?q=mountain`) drives the image selection, and an optional `page` parameter paginates results.
-- A fallback image is served when no match is found, and a help page is rendered when `q` is omitted.
-
-Operational notes: CORS is enabled, requests use HTTP `GET` only, and responses can be slow (average response time around 5 seconds in community measurements). Results are cached server-side under a `placeholders/` directory keyed by SHA1 hash, so repeated queries for the same keyword are served from cache.
 
 ## Try it
 
@@ -49,27 +36,31 @@ gem install placeholder-image-sdk
 luarocks install placeholder-image-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { PlaceholderImageSDK } from 'placeholder-image'
 
-const client = new PlaceholderImageSDK({})
+const client = new PlaceholderImageSDK({
+  apikey: process.env.PLACEHOLDER-IMAGE_APIKEY,
+})
 
+// Load placeholder data
+const placeholder = await client.Placeholder().load({})
+console.log(placeholder.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -99,8 +90,8 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Placeholder** | A keyword-driven placeholder image lookup, exposed via `GET /placeholder` (binary image) and `GET /placeholder/url` (plain-text URL). | `/placeholder` |
-| **PlaceholderImage** | The image resource itself, selected by the `q` keyword parameter and optionally paged via `page`. | `/placeholder/url` |
+| **Placeholder** |  | `/placeholder` |
+| **PlaceholderImage** |  | `/placeholder/url` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -110,15 +101,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from placeholderimage_sdk import PlaceholderImageSDK
 
-client = PlaceholderImageSDK({})
+client = PlaceholderImageSDK({
+    "apikey": os.environ.get("PLACEHOLDER-IMAGE_APIKEY"),
+})
 
 
 # Load a specific placeholder
-placeholder, err = client.Placeholder(None).load(
-    {"id": "example_id"}, None
-)
+placeholder, err = client.Placeholder().load({"id": "example_id"})
+print(placeholder)
 ```
 
 ### PHP
@@ -127,13 +120,14 @@ placeholder, err = client.Placeholder(None).load(
 <?php
 require_once 'placeholderimage_sdk.php';
 
-$client = new PlaceholderImageSDK([]);
+$client = new PlaceholderImageSDK([
+    "apikey" => getenv("PLACEHOLDER-IMAGE_APIKEY"),
+]);
 
 
 // Load a specific placeholder
-[$placeholder, $err] = $client->Placeholder(null)->load(
-    ["id" => "example_id"], null
-);
+[$placeholder, $err] = $client->Placeholder()->load(["id" => "example_id"]);
+print_r($placeholder);
 ```
 
 ### Golang
@@ -141,8 +135,13 @@ $client = new PlaceholderImageSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/placeholder-image-sdk/go"
 
-client := sdk.NewPlaceholderImageSDK(map[string]any{})
+client := sdk.NewPlaceholderImageSDK(map[string]any{
+    "apikey": os.Getenv("PLACEHOLDER-IMAGE_APIKEY"),
+})
 
+// Load placeholder data
+placeholder, err := client.Placeholder(nil).Load(map[string]any{}, nil)
+fmt.Println(placeholder)
 ```
 
 ### Ruby
@@ -150,13 +149,14 @@ client := sdk.NewPlaceholderImageSDK(map[string]any{})
 ```ruby
 require_relative "PlaceholderImage_sdk"
 
-client = PlaceholderImageSDK.new({})
+client = PlaceholderImageSDK.new({
+  "apikey" => ENV["PLACEHOLDER-IMAGE_APIKEY"],
+})
 
 
 # Load a specific placeholder
-placeholder, err = client.Placeholder(nil).load(
-  { "id" => "example_id" }, nil
-)
+placeholder, err = client.Placeholder().load({ "id" => "example_id" })
+puts placeholder
 ```
 
 ### Lua
@@ -164,13 +164,14 @@ placeholder, err = client.Placeholder(nil).load(
 ```lua
 local sdk = require("placeholder-image_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("PLACEHOLDER-IMAGE_APIKEY"),
+})
 
 
 -- Load a specific placeholder
-local placeholder, err = client:Placeholder(nil):load(
-  { id = "example_id" }, nil
-)
+local placeholder, err = client:Placeholder():load({ id = "example_id" })
+print(placeholder)
 ```
 
 ## Unit testing in offline mode
@@ -189,25 +190,21 @@ const result = await client.Placeholder().load({ id: 'test01' })
 ### Python
 
 ```python
-client = PlaceholderImageSDK.test(None, None)
-result, err = client.Placeholder(None).load(
-    {"id": "test01"}, None
-)
+client = PlaceholderImageSDK.test()
+result, err = client.Placeholder().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = PlaceholderImageSDK::test(null, null);
-[$result, $err] = $client->Placeholder(null)->load(
-    ["id" => "test01"], null
-);
+$client = PlaceholderImageSDK::test();
+[$result, $err] = $client->Placeholder()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Placeholder(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -216,19 +213,15 @@ result, err := client.Placeholder(nil).Load(
 ### Ruby
 
 ```ruby
-client = PlaceholderImageSDK.test(nil, nil)
-result, err = client.Placeholder(nil).load(
-  { "id" => "test01" }, nil
-)
+client = PlaceholderImageSDK.test
+result, err = client.Placeholder().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Placeholder(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Placeholder():load({ id = "test01" })
 ```
 
 ## How it works
@@ -332,11 +325,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Placeholder Image API
-
-- Upstream: [https://sodeom.com](https://sodeom.com)
-- API docs: [https://sodeom.com/apis/placeholder](https://sodeom.com/apis/placeholder)
 
 ---
 

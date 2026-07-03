@@ -68,12 +68,14 @@ function placeholder_direct_setup(mockres)
   local env = runner.env_override({
     ["PLACEHOLDERIMAGE_TEST_PLACEHOLDER_ENTID"] = {},
     ["PLACEHOLDERIMAGE_TEST_LIVE"] = "FALSE",
+    ["PLACEHOLDERIMAGE_APIKEY"] = "NONE",
   })
 
   local live = env["PLACEHOLDERIMAGE_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["PLACEHOLDERIMAGE_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

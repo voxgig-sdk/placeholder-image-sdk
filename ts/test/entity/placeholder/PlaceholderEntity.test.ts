@@ -113,6 +113,7 @@ function basicSetup(extra?: any) {
     'PLACEHOLDER_IMAGE_TEST_PLACEHOLDER_ENTID': idmap,
     'PLACEHOLDER_IMAGE_TEST_LIVE': 'FALSE',
     'PLACEHOLDER_IMAGE_TEST_EXPLAIN': 'FALSE',
+    'PLACEHOLDER_IMAGE_APIKEY': 'NONE',
   })
 
   idmap = env['PLACEHOLDER_IMAGE_TEST_PLACEHOLDER_ENTID']
@@ -122,6 +123,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new PlaceholderImageSDK(merge([
       {
+        apikey: env.PLACEHOLDER_IMAGE_APIKEY,
       },
       extra
     ]))

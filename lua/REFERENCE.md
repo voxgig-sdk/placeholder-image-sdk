@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -98,7 +98,7 @@ local placeholder = client:Placeholder(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Placeholder(nil):load({ id = "placeholder_id" }, nil)
+local result, err = client:Placeholder():load({ id = "placeholder_id" })
 ```
 
 ### Common Methods
@@ -144,7 +144,7 @@ local placeholder_image = client:PlaceholderImage(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:PlaceholderImage(nil):load({ id = "placeholder_image_id" }, nil)
+local result, err = client:PlaceholderImage():load({ id = "placeholder_image_id" })
 ```
 
 ### Common Methods

@@ -64,12 +64,14 @@ def _placeholder_image_direct_setup(mockres):
     env = runner.env_override({
         "PLACEHOLDERIMAGE_TEST_PLACEHOLDER_IMAGE_ENTID": {},
         "PLACEHOLDERIMAGE_TEST_LIVE": "FALSE",
+        "PLACEHOLDERIMAGE_APIKEY": "NONE",
     })
 
     live = env.get("PLACEHOLDERIMAGE_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("PLACEHOLDERIMAGE_APIKEY"),
         }
         client = PlaceholderImageSDK(merged_opts)
         return {

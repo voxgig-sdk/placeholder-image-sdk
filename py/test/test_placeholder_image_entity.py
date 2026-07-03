@@ -91,6 +91,7 @@ def _placeholder_image_basic_setup(extra):
         "PLACEHOLDERIMAGE_TEST_PLACEHOLDER_IMAGE_ENTID": idmap,
         "PLACEHOLDERIMAGE_TEST_LIVE": "FALSE",
         "PLACEHOLDERIMAGE_TEST_EXPLAIN": "FALSE",
+        "PLACEHOLDERIMAGE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -101,6 +102,7 @@ def _placeholder_image_basic_setup(extra):
     if env.get("PLACEHOLDERIMAGE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("PLACEHOLDERIMAGE_APIKEY"),
             },
             extra or {},
         ])

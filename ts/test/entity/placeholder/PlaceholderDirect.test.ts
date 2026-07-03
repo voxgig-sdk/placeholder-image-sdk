@@ -78,12 +78,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'PLACEHOLDERIMAGE_TEST_PLACEHOLDER_ENTID': {},
     'PLACEHOLDERIMAGE_TEST_LIVE': 'FALSE',
+    'PLACEHOLDERIMAGE_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.PLACEHOLDERIMAGE_TEST_LIVE
 
   if (live) {
     const client = new PlaceholderImageSDK({
+      apikey: env.PLACEHOLDERIMAGE_APIKEY,
     })
 
     let idmap: any = env['PLACEHOLDERIMAGE_TEST_PLACEHOLDER_ENTID']
