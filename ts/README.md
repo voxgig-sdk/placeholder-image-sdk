@@ -10,7 +10,7 @@ The TypeScript SDK for the PlaceholderImage API — a type-safe, entity-oriented
 
 ## Install
 ```bash
-npm install placeholder-image
+npm install @voxgig-sdk/placeholder-image
 ```
 ## Tutorial: your first API call
 

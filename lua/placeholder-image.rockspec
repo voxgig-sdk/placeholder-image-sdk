@@ -8,12 +8,14 @@ source = {
   dir = "placeholder-image-sdk/lua"
 }
 description = {
-  summary = "PlaceholderImage SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Placeholder Image public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/placeholder-image-sdk",
+  issues_url = "https://github.com/voxgig-sdk/placeholder-image-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "placeholder-image" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

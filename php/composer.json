@@ -1,8 +1,17 @@
 {
   "name": "voxgig-sdk/placeholder-image",
-  "description": "PlaceholderImage SDK for PHP",
+  "description": "Unofficial generated PHP SDK for the Placeholder Image public API. Not affiliated with or endorsed by the upstream API provider.",
   "type": "library",
+  "keywords": ["voxgig", "sdk", "generated-sdk", "openapi", "api-client", "placeholder-image"],
+  "homepage": "https://github.com/voxgig-sdk/placeholder-image-sdk",
   "license": "MIT",
+  "authors": [
+    { "name": "Voxgig", "homepage": "https://voxgig.com" }
+  ],
+  "support": {
+    "issues": "https://github.com/voxgig-sdk/placeholder-image-sdk/issues",
+    "source": "https://github.com/voxgig-sdk/placeholder-image-sdk"
+  },
   "minimum-stability": "stable",
   "require": {
     "php": ">=8.2"

@@ -10,7 +10,7 @@ The Python SDK for the PlaceholderImage API — an entity-oriented client follow
 
 ## Install
 ```bash
-pip install placeholder-image-sdk
+pip install voxgig-sdk-placeholder-image
 ```
 
 Or install from source:

@@ -10,7 +10,7 @@ The Lua SDK for the PlaceholderImage API — an entity-oriented client using Lua
 
 ## Install
 ```bash
-luarocks install placeholder-image-sdk
+luarocks install voxgig-sdk-placeholder-image
 ```
 
 If the module is not yet published, add the source directory to
