@@ -49,8 +49,7 @@ class TestPlaceholderEntity:
         # LOAD
         placeholder_ref01_ent = client.Placeholder(None)
         placeholder_ref01_match_dt0 = {}
-        placeholder_ref01_data_dt0_loaded, err = placeholder_ref01_ent.load(placeholder_ref01_match_dt0, None)
-        assert err is None
+        placeholder_ref01_data_dt0_loaded = placeholder_ref01_ent.load(placeholder_ref01_match_dt0, None)
         assert placeholder_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _placeholder_basic_setup(extra):
         "PLACEHOLDERIMAGE_TEST_PLACEHOLDER_ENTID": idmap,
         "PLACEHOLDERIMAGE_TEST_LIVE": "FALSE",
         "PLACEHOLDERIMAGE_TEST_EXPLAIN": "FALSE",
-        "PLACEHOLDERIMAGE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _placeholder_basic_setup(extra):
     if env.get("PLACEHOLDERIMAGE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("PLACEHOLDERIMAGE_APIKEY"),
             },
             extra or {},
         ])

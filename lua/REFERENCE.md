@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -88,7 +87,7 @@ same parameters as `direct()`.
 ## PlaceholderEntity
 
 ```lua
-local placeholder = client:Placeholder(nil)
+local placeholder = client:placeholder(nil)
 ```
 
 ### Operations
@@ -98,7 +97,7 @@ local placeholder = client:Placeholder(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Placeholder():load({ id = "placeholder_id" })
+local result, err = client:placeholder():load({ id = "placeholder_id" })
 ```
 
 ### Common Methods
@@ -134,7 +133,7 @@ Return the entity name.
 ## PlaceholderImageEntity
 
 ```lua
-local placeholder_image = client:PlaceholderImage(nil)
+local placeholder_image = client:placeholder_image(nil)
 ```
 
 ### Operations
@@ -144,7 +143,7 @@ local placeholder_image = client:PlaceholderImage(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:PlaceholderImage():load({ id = "placeholder_image_id" })
+local result, err = client:placeholder_image():load({ id = "placeholder_image_id" })
 ```
 
 ### Common Methods

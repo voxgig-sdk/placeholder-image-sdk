@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch PlaceholderLoadMatch
+---@param ctrl? table
+---@return Placeholder
+---@return string? err
 function PlaceholderEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -45,6 +45,7 @@ class PlaceholderEntity
     end
   end
 
+  # @return [Placeholder, Hash] the current Placeholder data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class PlaceholderEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Placeholder fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Placeholder.
+  #
+  # @param reqmatch [PlaceholderLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Placeholder, Hash] the loaded Placeholder; raises PlaceholderImageError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

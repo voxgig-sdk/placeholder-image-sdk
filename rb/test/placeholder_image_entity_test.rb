@@ -42,8 +42,7 @@ class PlaceholderImageEntityTest < Minitest::Test
     # LOAD
     placeholder_image_ref01_ent = client.PlaceholderImage(nil)
     placeholder_image_ref01_match_dt0 = {}
-    placeholder_image_ref01_data_dt0_loaded, err = placeholder_image_ref01_ent.load(placeholder_image_ref01_match_dt0, nil)
-    assert_nil err
+    placeholder_image_ref01_data_dt0_loaded = placeholder_image_ref01_ent.load(placeholder_image_ref01_match_dt0, nil)
     assert !placeholder_image_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def placeholder_image_basic_setup(extra)
     "PLACEHOLDERIMAGE_TEST_PLACEHOLDER_IMAGE_ENTID" => idmap,
     "PLACEHOLDERIMAGE_TEST_LIVE" => "FALSE",
     "PLACEHOLDERIMAGE_TEST_EXPLAIN" => "FALSE",
-    "PLACEHOLDERIMAGE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def placeholder_image_basic_setup(extra)
   if env["PLACEHOLDERIMAGE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["PLACEHOLDERIMAGE_APIKEY"],
       },
       extra || {},
     ])

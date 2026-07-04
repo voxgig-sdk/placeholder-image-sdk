@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -122,7 +121,7 @@ Alias for `PlaceholderImageSDK.test()`.
 ## PlaceholderEntity
 
 ```ts
-const placeholder = client.Placeholder()
+const placeholder = client.placeholder
 ```
 
 ### Operations
@@ -132,7 +131,7 @@ const placeholder = client.Placeholder()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Placeholder().load({ id: 'placeholder_id' })
+const result = await client.placeholder.load({ id: 'placeholder_id' })
 ```
 
 ### Common Methods
@@ -166,7 +165,7 @@ Return a copy of the entity options.
 ## PlaceholderImageEntity
 
 ```ts
-const placeholder_image = client.PlaceholderImage()
+const placeholder_image = client.placeholder_image
 ```
 
 ### Operations
@@ -176,7 +175,7 @@ const placeholder_image = client.PlaceholderImage()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.PlaceholderImage().load({ id: 'placeholder_image_id' })
+const result = await client.placeholder_image.load({ id: 'placeholder_image_id' })
 ```
 
 ### Common Methods

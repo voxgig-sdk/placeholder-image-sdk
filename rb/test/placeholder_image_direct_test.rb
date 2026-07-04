@@ -21,7 +21,7 @@ class PlaceholderImageDirectTest < Minitest::Test
       query["q"] = "mountain"
     end
 
-    result, err = client.direct({
+    result = client.direct({
       "path" => "placeholder/url",
       "method" => "GET",
       "params" => params,
@@ -31,8 +31,8 @@ class PlaceholderImageDirectTest < Minitest::Test
       # Live mode is lenient: synthetic IDs frequently 4xx. Skip rather
       # than fail when the load endpoint isn't reachable with the IDs
       # we can construct from setup.idmap.
-      if !err.nil?
-        skip("load call failed (likely synthetic IDs against live API): #{err}")
+      if !result["err"].nil?
+        skip("load call failed (likely synthetic IDs against live API): #{result["err"]}")
         return
       end
       unless result["ok"]
@@ -45,7 +45,7 @@ class PlaceholderImageDirectTest < Minitest::Test
         return
       end
     else
-      assert_nil err
+      assert_nil result["err"]
       assert result["ok"]
       assert_equal 200, Helpers.to_int(result["status"])
       assert !result["data"].nil?
@@ -67,14 +67,12 @@ def placeholder_image_direct_setup(mockres)
   env = Runner.env_override({
     "PLACEHOLDERIMAGE_TEST_PLACEHOLDER_IMAGE_ENTID" => {},
     "PLACEHOLDERIMAGE_TEST_LIVE" => "FALSE",
-    "PLACEHOLDERIMAGE_APIKEY" => "NONE",
   })
 
   live = env["PLACEHOLDERIMAGE_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["PLACEHOLDERIMAGE_APIKEY"],
     }
     client = PlaceholderImageSDK.new(merged_opts)
     return {

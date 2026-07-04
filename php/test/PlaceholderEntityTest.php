@@ -49,8 +49,7 @@ class PlaceholderEntityTest extends TestCase
         // LOAD
         $placeholder_ref01_ent = $client->Placeholder(null);
         $placeholder_ref01_match_dt0 = [];
-        [$placeholder_ref01_data_dt0_loaded, $err] = $placeholder_ref01_ent->load($placeholder_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $placeholder_ref01_data_dt0_loaded = $placeholder_ref01_ent->load($placeholder_ref01_match_dt0, null);
         $this->assertNotNull($placeholder_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function placeholder_basic_setup($extra)
         "PLACEHOLDERIMAGE_TEST_PLACEHOLDER_ENTID" => $idmap,
         "PLACEHOLDERIMAGE_TEST_LIVE" => "FALSE",
         "PLACEHOLDERIMAGE_TEST_EXPLAIN" => "FALSE",
-        "PLACEHOLDERIMAGE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function placeholder_basic_setup($extra)
     if ($env["PLACEHOLDERIMAGE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["PLACEHOLDERIMAGE_APIKEY"],
             ],
             $extra ?? [],
         ]);

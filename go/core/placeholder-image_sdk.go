@@ -245,11 +245,17 @@ func (sdk *PlaceholderImageSDK) Direct(fetchargs map[string]any) (map[string]any
 }
 
 
+// Placeholder returns a Placeholder entity bound to this client.
+// Idiomatic usage: client.Placeholder(nil).List(nil, nil) or
+// client.Placeholder(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *PlaceholderImageSDK) Placeholder(data map[string]any) PlaceholderImageEntity {
 	return NewPlaceholderEntityFunc(sdk, data)
 }
 
 
+// PlaceholderImage returns a PlaceholderImage entity bound to this client.
+// Idiomatic usage: client.PlaceholderImage(nil).List(nil, nil) or
+// client.PlaceholderImage(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *PlaceholderImageSDK) PlaceholderImage(data map[string]any) PlaceholderImageEntity {
 	return NewPlaceholderImageEntityFunc(sdk, data)
 }

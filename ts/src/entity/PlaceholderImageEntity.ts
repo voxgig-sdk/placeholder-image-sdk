@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  PlaceholderImage,
+  PlaceholderImageLoadMatch,
+} from '../PlaceholderImageTypes'
 
 // TODO: needs Entity superclass
-class PlaceholderImageEntity extends PlaceholderImageEntityBase {
+class PlaceholderImageEntity extends PlaceholderImageEntityBase<PlaceholderImage> {
 
   constructor(client: PlaceholderImageSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class PlaceholderImageEntity extends PlaceholderImageEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: PlaceholderImageLoadMatch, ctrl?: Control): Promise<PlaceholderImage> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class PlaceholderImageEntity extends PlaceholderImageEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<PlaceholderImage> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

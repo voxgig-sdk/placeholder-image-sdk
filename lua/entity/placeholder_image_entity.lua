@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch PlaceholderImageLoadMatch
+---@param ctrl? table
+---@return PlaceholderImage
+---@return string? err
 function PlaceholderImageEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

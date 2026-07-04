@@ -244,12 +244,38 @@ end
 
 
 
+-- Idiomatic facade: client:placeholder():list() / client:placeholder():load({ id = ... })
+function PlaceholderImageSDK:placeholder(data)
+  local EntityMod = require("entity.placeholder_entity")
+  if data == nil then
+    if self._placeholder == nil then
+      self._placeholder = EntityMod.new(self, nil)
+    end
+    return self._placeholder
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:placeholder() instead.
 function PlaceholderImageSDK:Placeholder(data)
   local EntityMod = require("entity.placeholder_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:placeholder_image():list() / client:placeholder_image():load({ id = ... })
+function PlaceholderImageSDK:placeholder_image(data)
+  local EntityMod = require("entity.placeholder_image_entity")
+  if data == nil then
+    if self._placeholder_image == nil then
+      self._placeholder_image = EntityMod.new(self, nil)
+    end
+    return self._placeholder_image
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:placeholder_image() instead.
 function PlaceholderImageSDK:PlaceholderImage(data)
   local EntityMod = require("entity.placeholder_image_entity")
   return EntityMod.new(self, data)

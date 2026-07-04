@@ -9,12 +9,9 @@ The Lua SDK for the PlaceholderImage API — an entity-oriented client using Lua
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-placeholder-image
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/placeholder-image-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,15 +28,13 @@ loading a specific record.
 ```lua
 local sdk = require("placeholder-image_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("PLACEHOLDER-IMAGE_APIKEY"),
-})
+local client = sdk.new()
 ```
 
 ### 3. Load a placeholder
 
 ```lua
-local result, err = client:Placeholder():load({ id = "example_id" })
+local result, err = client:placeholder():load({ id = "example_id" })
 if err then error(err) end
 print(result)
 ```
@@ -87,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:PlaceholderImage():load({ id = "test01" })
+local result, err = client:placeholder():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -120,8 +115,7 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-PLACEHOLDER-IMAGE_TEST_LIVE=TRUE
-PLACEHOLDER-IMAGE_APIKEY=<your-key>
+PLACEHOLDER_IMAGE_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -144,7 +138,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -230,7 +223,7 @@ API path: `/placeholder/url`
 
 ### Placeholder
 
-Create an instance: `const placeholder = client.Placeholder()`
+Create an instance: `const placeholder = client.placeholder`
 
 #### Operations
 
@@ -241,13 +234,13 @@ Create an instance: `const placeholder = client.Placeholder()`
 #### Example: Load
 
 ```ts
-const placeholder = await client.Placeholder().load({ id: 'placeholder_id' })
+const placeholder = await client.placeholder.load({ id: 'placeholder_id' })
 ```
 
 
 ### PlaceholderImage
 
-Create an instance: `const placeholder_image = client.PlaceholderImage()`
+Create an instance: `const placeholder_image = client.placeholder_image`
 
 #### Operations
 
@@ -258,7 +251,7 @@ Create an instance: `const placeholder_image = client.PlaceholderImage()`
 #### Example: Load
 
 ```ts
-const placeholder_image = await client.PlaceholderImage().load({ id: 'placeholder_image_id' })
+const placeholder_image = await client.placeholder_image.load({ id: 'placeholder_image_id' })
 ```
 
 
@@ -333,11 +326,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local placeholder = client:placeholder()
+placeholder:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- placeholder:data_get() now returns the loaded placeholder data
+-- placeholder:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

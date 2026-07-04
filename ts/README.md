@@ -9,9 +9,12 @@ The TypeScript SDK for the PlaceholderImage API — a type-safe, entity-oriented
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/placeholder-image
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/placeholder-image-sdk/releases](https://github.com/voxgig-sdk/placeholder-image-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { PlaceholderImageSDK } from 'placeholder-image'
+import { PlaceholderImageSDK } from '@voxgig-sdk/placeholder-image'
 
-const client = new PlaceholderImageSDK({
-  apikey: process.env.PLACEHOLDER-IMAGE_APIKEY,
-})
+const client = new PlaceholderImageSDK()
 ```
 
 ### 3. Load a placeholder
 
 ```ts
-const result = await client.Placeholder().load({ id: 'example_id' })
+const result = await client.placeholder.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -79,7 +80,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = PlaceholderImageSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.placeholder.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -87,7 +88,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new PlaceholderImageSDK({ apikey: '...' })
+const client = new PlaceholderImageSDK()
 const testClient = client.tester()
 ```
 
@@ -96,7 +97,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.placeholder
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -123,7 +124,6 @@ const logger = {
 }
 
 const client = new PlaceholderImageSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -133,8 +133,7 @@ const client = new PlaceholderImageSDK({
 Create a `.env.local` file at the project root:
 
 ```
-PLACEHOLDER-IMAGE_TEST_LIVE=TRUE
-PLACEHOLDER-IMAGE_APIKEY=<your-key>
+PLACEHOLDER_IMAGE_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -152,7 +151,6 @@ cd ts && npm test
 
 ```ts
 new PlaceholderImageSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -163,7 +161,6 @@ new PlaceholderImageSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -275,7 +272,7 @@ API path: `/placeholder/url`
 
 ### Placeholder
 
-Create an instance: `const placeholder = client.Placeholder()`
+Create an instance: `const placeholder = client.placeholder`
 
 #### Operations
 
@@ -286,13 +283,13 @@ Create an instance: `const placeholder = client.Placeholder()`
 #### Example: Load
 
 ```ts
-const placeholder = await client.Placeholder().load({ id: 'placeholder_id' })
+const placeholder = await client.placeholder.load({ id: 'placeholder_id' })
 ```
 
 
 ### PlaceholderImage
 
-Create an instance: `const placeholder_image = client.PlaceholderImage()`
+Create an instance: `const placeholder_image = client.placeholder_image`
 
 #### Operations
 
@@ -303,7 +300,7 @@ Create an instance: `const placeholder_image = client.PlaceholderImage()`
 #### Example: Load
 
 ```ts
-const placeholder_image = await client.PlaceholderImage().load({ id: 'placeholder_image_id' })
+const placeholder_image = await client.placeholder_image.load({ id: 'placeholder_image_id' })
 ```
 
 
@@ -364,7 +361,7 @@ placeholder-image/
 Import the SDK from the package root:
 
 ```ts
-import { PlaceholderImageSDK } from 'placeholder-image'
+import { PlaceholderImageSDK } from '@voxgig-sdk/placeholder-image'
 ```
 
 ### Entity state
@@ -374,11 +371,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const placeholder = client.placeholder
+await placeholder.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// placeholder.data() now returns the loaded placeholder data
+// placeholder.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -105,14 +105,12 @@ func placeholderDirectSetup(mockres any) *placeholderDirectSetupResult {
 	env := envOverride(map[string]any{
 		"PLACEHOLDERIMAGE_TEST_PLACEHOLDER_ENTID": map[string]any{},
 		"PLACEHOLDERIMAGE_TEST_LIVE":    "FALSE",
-		"PLACEHOLDERIMAGE_APIKEY":       "NONE",
 	})
 
 	live := env["PLACEHOLDERIMAGE_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["PLACEHOLDERIMAGE_APIKEY"],
 		}
 		client := sdk.NewPlaceholderImageSDK(mergedOpts)
 
