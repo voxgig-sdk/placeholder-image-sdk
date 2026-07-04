@@ -32,8 +32,9 @@ client = PlaceholderImageSDK.new
 
 ```ruby
 begin
-  result = client.placeholder.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Placeholder record (raises on error).
+  placeholder = client.Placeholder.load({ "id" => "example_id" })
+  puts placeholder
 rescue => err
   warn "load failed: #{err}"
 end
@@ -80,13 +81,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = PlaceholderImageSDK.test
+client = PlaceholderImageSDK.test({
+  "entity" => { "placeholder" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.placeholder.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+placeholder = client.Placeholder.load({ "id" => "test01" })
+puts placeholder
 ```
 
 ### Use a custom fetch function
@@ -227,7 +232,7 @@ API path: `/placeholder/url`
 
 ### Placeholder
 
-Create an instance: `const placeholder = client.placeholder`
+Create an instance: `placeholder = client.Placeholder`
 
 #### Operations
 
@@ -237,14 +242,15 @@ Create an instance: `const placeholder = client.placeholder`
 
 #### Example: Load
 
-```ts
-const placeholder = await client.placeholder.load({ id: 'placeholder_id' })
+```ruby
+# load returns the bare Placeholder record (raises on error).
+placeholder = client.Placeholder.load({ "id" => "placeholder_id" })
 ```
 
 
 ### PlaceholderImage
 
-Create an instance: `const placeholder_image = client.placeholder_image`
+Create an instance: `placeholder_image = client.PlaceholderImage`
 
 #### Operations
 
@@ -254,8 +260,9 @@ Create an instance: `const placeholder_image = client.placeholder_image`
 
 #### Example: Load
 
-```ts
-const placeholder_image = await client.placeholder_image.load({ id: 'placeholder_image_id' })
+```ruby
+# load returns the bare PlaceholderImage record (raises on error).
+placeholder_image = client.PlaceholderImage.load({ "id" => "placeholder_image_id" })
 ```
 
 
@@ -330,7 +337,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-placeholder = client.placeholder
+placeholder = client.Placeholder
 placeholder.load({ "id" => "example_id" })
 
 # placeholder.data_get now returns the loaded placeholder data

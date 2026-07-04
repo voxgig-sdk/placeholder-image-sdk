@@ -121,7 +121,7 @@ Alias for `PlaceholderImageSDK.test()`.
 ## PlaceholderEntity
 
 ```ts
-const placeholder = client.placeholder
+const placeholder = client.Placeholder()
 ```
 
 ### Operations
@@ -131,7 +131,7 @@ const placeholder = client.placeholder
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.placeholder.load({ id: 'placeholder_id' })
+const result = await client.Placeholder().load({ id: 'placeholder_id' })
 ```
 
 ### Common Methods
@@ -165,7 +165,7 @@ Return a copy of the entity options.
 ## PlaceholderImageEntity
 
 ```ts
-const placeholder_image = client.placeholder_image
+const placeholder_image = client.PlaceholderImage()
 ```
 
 ### Operations
@@ -175,7 +175,7 @@ const placeholder_image = client.placeholder_image
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.placeholder_image.load({ id: 'placeholder_image_id' })
+const result = await client.PlaceholderImage().load({ id: 'placeholder_image_id' })
 ```
 
 ### Common Methods

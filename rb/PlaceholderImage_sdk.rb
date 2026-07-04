@@ -208,26 +208,14 @@ class PlaceholderImageSDK
   end
 
 
-  # Idiomatic facade: client.placeholder.list / client.placeholder.load({ "id" => ... })
-  def placeholder
-    require_relative 'entity/placeholder_entity'
-    @placeholder ||= PlaceholderEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.placeholder instead.
+  # Canonical facade: client.Placeholder.list / client.Placeholder.load({ "id" => ... })
   def Placeholder(data = nil)
     require_relative 'entity/placeholder_entity'
     PlaceholderEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.placeholder_image.list / client.placeholder_image.load({ "id" => ... })
-  def placeholder_image
-    require_relative 'entity/placeholder_image_entity'
-    @placeholder_image ||= PlaceholderImageEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.placeholder_image instead.
+  # Canonical facade: client.PlaceholderImage.list / client.PlaceholderImage.load({ "id" => ... })
   def PlaceholderImage(data = nil)
     require_relative 'entity/placeholder_image_entity'
     PlaceholderImageEntity.new(self, data)

@@ -26,9 +26,9 @@ import { PlaceholderImageSDK } from '@voxgig-sdk/placeholder-image'
 
 const client = new PlaceholderImageSDK()
 
-// Load placeholder data
-const placeholder = await client.placeholder.load({})
-console.log(placeholder.data)
+// Load placeholder data (returns a Placeholder)
+const placeholder = await client.Placeholder().load()
+console.log(placeholder)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -85,8 +85,8 @@ from placeholderimage_sdk import PlaceholderImageSDK
 client = PlaceholderImageSDK()
 
 
-# Load a specific placeholder
-placeholder = client.placeholder.load({"id": "example_id"})
+# Load a specific placeholder (returns the record, raises on error)
+placeholder = client.Placeholder().load({"id": "example_id"})
 print(placeholder)
 ```
 
@@ -99,8 +99,8 @@ require_once 'placeholderimage_sdk.php';
 $client = new PlaceholderImageSDK();
 
 
-// Load a specific placeholder
-$placeholder = $client->placeholder()->load(["id" => "example_id"]);
+// Load a specific placeholder (returns the bare record; throws on error)
+$placeholder = $client->Placeholder()->load(["id" => "example_id"]);
 print_r($placeholder);
 ```
 
@@ -124,8 +124,8 @@ require_relative "PlaceholderImage_sdk"
 client = PlaceholderImageSDK.new
 
 
-# Load a specific placeholder
-placeholder = client.placeholder.load({ "id" => "example_id" })
+# Load a specific placeholder (returns the bare record; raises on error)
+placeholder = client.Placeholder.load({ "id" => "example_id" })
 puts placeholder
 ```
 
@@ -138,7 +138,7 @@ local client = sdk.new()
 
 
 -- Load a specific placeholder
-local placeholder, err = client:placeholder():load({ id = "example_id" })
+local placeholder, err = client:Placeholder():load({ id = "example_id" })
 print(placeholder)
 ```
 
@@ -151,22 +151,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = PlaceholderImageSDK.test()
-const result = await client.placeholder.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const placeholder = await client.Placeholder().load({ id: 'test01' })
+// placeholder is a bare Placeholder populated with mock data
+console.log(placeholder)
 ```
 
 ### Python
 
 ```python
 client = PlaceholderImageSDK.test()
-result = client.placeholder.load({"id": "test01"})
+placeholder = client.Placeholder().load({"id": "test01"})
+print(placeholder)
 ```
 
 ### PHP
 
 ```php
-$client = PlaceholderImageSDK::test();
-$result = $client->placeholder()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = PlaceholderImageSDK::test([
+    "entity" => ["placeholder" => ["test01" => ["id" => "test01"]]],
+]);
+$placeholder = $client->Placeholder()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -181,15 +186,18 @@ result, err := client.Placeholder(nil).Load(
 ### Ruby
 
 ```ruby
-client = PlaceholderImageSDK.test
-result = client.placeholder.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = PlaceholderImageSDK.test({
+  "entity" => { "placeholder" => { "test01" => { "id" => "test01" } } },
+})
+placeholder = client.Placeholder.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:placeholder():load({ id = "test01" })
+local result, err = client:Placeholder():load({ id = "test01" })
 ```
 
 ## How it works
@@ -237,6 +245,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

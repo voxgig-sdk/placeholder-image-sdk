@@ -33,9 +33,10 @@ $client = new PlaceholderImageSDK();
 
 ```php
 try {
-    $result = $client->placeholder()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Placeholder record (throws on error).
+    $placeholder = $client->Placeholder()->load(["id" => "example_id"]);
+    print_r($placeholder);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -81,13 +82,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = PlaceholderImageSDK::test();
+$client = PlaceholderImageSDK::test([
+    "entity" => ["placeholder" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->placeholder()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$placeholder = $client->Placeholder()->load(["id" => "test01"]);
+print_r($placeholder);
 ```
 
 ### Use a custom fetch function
@@ -232,7 +237,7 @@ API path: `/placeholder/url`
 
 ### Placeholder
 
-Create an instance: `const placeholder = client.placeholder`
+Create an instance: `$placeholder = $client->Placeholder();`
 
 #### Operations
 
@@ -242,14 +247,15 @@ Create an instance: `const placeholder = client.placeholder`
 
 #### Example: Load
 
-```ts
-const placeholder = await client.placeholder.load({ id: 'placeholder_id' })
+```php
+// load() returns the bare Placeholder record (throws on error).
+$placeholder = $client->Placeholder()->load(["id" => "placeholder_id"]);
 ```
 
 
 ### PlaceholderImage
 
-Create an instance: `const placeholder_image = client.placeholder_image`
+Create an instance: `$placeholder_image = $client->PlaceholderImage();`
 
 #### Operations
 
@@ -259,8 +265,9 @@ Create an instance: `const placeholder_image = client.placeholder_image`
 
 #### Example: Load
 
-```ts
-const placeholder_image = await client.placeholder_image.load({ id: 'placeholder_image_id' })
+```php
+// load() returns the bare PlaceholderImage record (throws on error).
+$placeholder_image = $client->PlaceholderImage()->load(["id" => "placeholder_image_id"]);
 ```
 
 
@@ -335,7 +342,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$placeholder = $client->placeholder();
+$placeholder = $client->Placeholder();
 $placeholder->load(["id" => "example_id"]);
 
 // $placeholder->dataGet() now returns the loaded placeholder data

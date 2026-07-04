@@ -90,7 +90,7 @@ same parameters as `direct()`. Raises on error.
 ## PlaceholderEntity
 
 ```ruby
-placeholder = client.placeholder
+placeholder = client.Placeholder
 ```
 
 ### Operations
@@ -100,7 +100,7 @@ placeholder = client.placeholder
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.placeholder.load({ "id" => "placeholder_id" })
+result = client.Placeholder.load({ "id" => "placeholder_id" })
 ```
 
 ### Common Methods
@@ -136,7 +136,7 @@ Return the entity name.
 ## PlaceholderImageEntity
 
 ```ruby
-placeholder_image = client.placeholder_image
+placeholder_image = client.PlaceholderImage
 ```
 
 ### Operations
@@ -146,7 +146,7 @@ placeholder_image = client.placeholder_image
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.placeholder_image.load({ "id" => "placeholder_image_id" })
+result = client.PlaceholderImage.load({ "id" => "placeholder_image_id" })
 ```
 
 ### Common Methods

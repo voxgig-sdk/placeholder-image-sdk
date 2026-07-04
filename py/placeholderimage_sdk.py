@@ -220,41 +220,21 @@ class PlaceholderImageSDK:
         }
 
 
-    @property
-    def placeholder(self):
-        """Idiomatic facade: client.placeholder.list() / client.placeholder.load({"id": ...})."""
-        from entity.placeholder_entity import PlaceholderEntity
-        cached = getattr(self, "_placeholder", None)
-        if cached is None:
-            cached = PlaceholderEntity(self, None)
-            self._placeholder = cached
-        return cached
-
-    def Placeholder(self, data=None):
-        # Deprecated: use client.placeholder instead.
+    def Placeholder(self, data=None) -> "PlaceholderEntity":
+        """Entity factory: client.Placeholder().list({}) / client.Placeholder().load({"id": ...})."""
         from entity.placeholder_entity import PlaceholderEntity
         return PlaceholderEntity(self, data)
 
 
-    @property
-    def placeholder_image(self):
-        """Idiomatic facade: client.placeholder_image.list() / client.placeholder_image.load({"id": ...})."""
-        from entity.placeholder_image_entity import PlaceholderImageEntity
-        cached = getattr(self, "_placeholder_image", None)
-        if cached is None:
-            cached = PlaceholderImageEntity(self, None)
-            self._placeholder_image = cached
-        return cached
-
-    def PlaceholderImage(self, data=None):
-        # Deprecated: use client.placeholder_image instead.
+    def PlaceholderImage(self, data=None) -> "PlaceholderImageEntity":
+        """Entity factory: client.PlaceholderImage().list({}) / client.PlaceholderImage().load({"id": ...})."""
         from entity.placeholder_image_entity import PlaceholderImageEntity
         return PlaceholderImageEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "PlaceholderImageSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -274,3 +254,10 @@ class PlaceholderImageSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.placeholder_entity import PlaceholderEntity
+    from entity.placeholder_image_entity import PlaceholderImageEntity

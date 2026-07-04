@@ -205,28 +205,14 @@ class PlaceholderImageSDK {
 
 
 
-  _placeholder?: PlaceholderEntity
-
-  // Idiomatic facade: `client.placeholder.list()` / `client.placeholder.load({ id })`.
-  get placeholder(): PlaceholderEntity {
-    return (this._placeholder ??= new PlaceholderEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.placeholder` instead. */
+  // Entity access: `client.Placeholder().list()` / `client.Placeholder().load({ id })`.
   Placeholder(data?: any) {
     const self = this
     return new PlaceholderEntity(self,data)
   }
 
 
-  _placeholder_image?: PlaceholderImageEntity
-
-  // Idiomatic facade: `client.placeholder_image.list()` / `client.placeholder_image.load({ id })`.
-  get placeholder_image(): PlaceholderImageEntity {
-    return (this._placeholder_image ??= new PlaceholderImageEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.placeholder_image` instead. */
+  // Entity access: `client.PlaceholderImage().list()` / `client.PlaceholderImage().load({ id })`.
   PlaceholderImage(data?: any) {
     const self = this
     return new PlaceholderImageEntity(self,data)

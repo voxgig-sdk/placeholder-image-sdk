@@ -233,10 +233,10 @@ class PlaceholderImageSDK
 
     private $_placeholder = null;
 
-    // Idiomatic facade: $client->placeholder()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Placeholder() (PHP method
-    // names are case-insensitive).
-    public function placeholder($data = null)
+    // Canonical facade: $client->Placeholder()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->placeholder()
+    // resolves here too.
+    public function Placeholder($data = null)
     {
         require_once __DIR__ . '/entity/placeholder_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class PlaceholderImageSDK
 
     private $_placeholder_image = null;
 
-    // Idiomatic facade: $client->placeholder_image()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias PlaceholderImage() (PHP method
-    // names are case-insensitive).
-    public function placeholder_image($data = null)
+    // Canonical facade: $client->PlaceholderImage()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->placeholder_image()
+    // resolves here too.
+    public function PlaceholderImage($data = null)
     {
         require_once __DIR__ . '/entity/placeholder_image_entity.php';
         if ($data === null) {

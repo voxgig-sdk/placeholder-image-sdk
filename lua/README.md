@@ -34,9 +34,9 @@ local client = sdk.new()
 ### 3. Load a placeholder
 
 ```lua
-local result, err = client:placeholder():load({ id = "example_id" })
+local placeholder, err = client:Placeholder():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(placeholder)
 ```
 
 
@@ -82,8 +82,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:placeholder():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Placeholder():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -184,17 +184,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local placeholder, err = client:Placeholder():load({ id = "example_id" })
+    if err then error(err) end
+    -- placeholder is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -223,7 +228,7 @@ API path: `/placeholder/url`
 
 ### Placeholder
 
-Create an instance: `const placeholder = client.placeholder`
+Create an instance: `local placeholder = client:Placeholder(nil)`
 
 #### Operations
 
@@ -233,14 +238,14 @@ Create an instance: `const placeholder = client.placeholder`
 
 #### Example: Load
 
-```ts
-const placeholder = await client.placeholder.load({ id: 'placeholder_id' })
+```lua
+local placeholder, err = client:Placeholder():load({ id = "placeholder_id" })
 ```
 
 
 ### PlaceholderImage
 
-Create an instance: `const placeholder_image = client.placeholder_image`
+Create an instance: `local placeholder_image = client:PlaceholderImage(nil)`
 
 #### Operations
 
@@ -250,8 +255,8 @@ Create an instance: `const placeholder_image = client.placeholder_image`
 
 #### Example: Load
 
-```ts
-const placeholder_image = await client.placeholder_image.load({ id: 'placeholder_image_id' })
+```lua
+local placeholder_image, err = client:PlaceholderImage():load({ id = "placeholder_image_id" })
 ```
 
 
@@ -326,7 +331,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local placeholder = client:placeholder()
+local placeholder = client:Placeholder()
 placeholder:load({ id = "example_id" })
 
 -- placeholder:data_get() now returns the loaded placeholder data

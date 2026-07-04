@@ -87,7 +87,7 @@ same parameters as `direct()`.
 ## PlaceholderEntity
 
 ```lua
-local placeholder = client:placeholder(nil)
+local placeholder = client:Placeholder(nil)
 ```
 
 ### Operations
@@ -97,7 +97,7 @@ local placeholder = client:placeholder(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:placeholder():load({ id = "placeholder_id" })
+local result, err = client:Placeholder():load({ id = "placeholder_id" })
 ```
 
 ### Common Methods
@@ -133,7 +133,7 @@ Return the entity name.
 ## PlaceholderImageEntity
 
 ```lua
-local placeholder_image = client:placeholder_image(nil)
+local placeholder_image = client:PlaceholderImage(nil)
 ```
 
 ### Operations
@@ -143,7 +143,7 @@ local placeholder_image = client:placeholder_image(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:placeholder_image():load({ id = "placeholder_image_id" })
+local result, err = client:PlaceholderImage():load({ id = "placeholder_image_id" })
 ```
 
 ### Common Methods

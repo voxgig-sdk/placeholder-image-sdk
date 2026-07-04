@@ -33,10 +33,12 @@ client = PlaceholderImageSDK()
 
 ### 3. Load a placeholder
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.placeholder.load({"id": "example_id"})
-    print(result)
+    placeholder = client.Placeholder().load({"id": "example_id"})
+    print(placeholder)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -84,8 +86,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = PlaceholderImageSDK.test()
 
-result = client.placeholder.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+placeholder = client.Placeholder().load({"id": "test01"})
+# placeholder contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -227,7 +230,7 @@ API path: `/placeholder/url`
 
 ### Placeholder
 
-Create an instance: `const placeholder = client.placeholder`
+Create an instance: `placeholder = client.Placeholder()`
 
 #### Operations
 
@@ -237,14 +240,14 @@ Create an instance: `const placeholder = client.placeholder`
 
 #### Example: Load
 
-```ts
-const placeholder = await client.placeholder.load({ id: 'placeholder_id' })
+```python
+placeholder = client.Placeholder().load({"id": "placeholder_id"})
 ```
 
 
 ### PlaceholderImage
 
-Create an instance: `const placeholder_image = client.placeholder_image`
+Create an instance: `placeholder_image = client.PlaceholderImage()`
 
 #### Operations
 
@@ -254,8 +257,8 @@ Create an instance: `const placeholder_image = client.placeholder_image`
 
 #### Example: Load
 
-```ts
-const placeholder_image = await client.placeholder_image.load({ id: 'placeholder_image_id' })
+```python
+placeholder_image = client.PlaceholderImage().load({"id": "placeholder_image_id"})
 ```
 
 
@@ -329,7 +332,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-placeholder = client.placeholder
+placeholder = client.Placeholder()
 placeholder.load({"id": "example_id"})
 
 # placeholder.data_get() now returns the loaded placeholder data

@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:placeholder():list() / client:placeholder():load({ id = ... })
-function PlaceholderImageSDK:placeholder(data)
+-- Idiomatic facade: client:Placeholder():list() / client:Placeholder():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PlaceholderImageSDK:Placeholder(data)
   local EntityMod = require("entity.placeholder_entity")
   if data == nil then
     if self._placeholder == nil then
@@ -256,15 +257,10 @@ function PlaceholderImageSDK:placeholder(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:placeholder() instead.
-function PlaceholderImageSDK:Placeholder(data)
-  local EntityMod = require("entity.placeholder_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:placeholder_image():list() / client:placeholder_image():load({ id = ... })
-function PlaceholderImageSDK:placeholder_image(data)
+-- Idiomatic facade: client:PlaceholderImage():list() / client:PlaceholderImage():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function PlaceholderImageSDK:PlaceholderImage(data)
   local EntityMod = require("entity.placeholder_image_entity")
   if data == nil then
     if self._placeholder_image == nil then
@@ -272,12 +268,6 @@ function PlaceholderImageSDK:placeholder_image(data)
     end
     return self._placeholder_image
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:placeholder_image() instead.
-function PlaceholderImageSDK:PlaceholderImage(data)
-  local EntityMod = require("entity.placeholder_image_entity")
   return EntityMod.new(self, data)
 end
 

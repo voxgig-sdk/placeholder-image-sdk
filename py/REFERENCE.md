@@ -84,7 +84,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## PlaceholderEntity
 
 ```python
-placeholder = client.placeholder
+placeholder = client.Placeholder()
 ```
 
 ### Operations
@@ -94,7 +94,7 @@ placeholder = client.placeholder
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.placeholder.load({"id": "placeholder_id"})
+result = client.Placeholder().load({"id": "placeholder_id"})
 ```
 
 ### Common Methods
@@ -129,7 +129,7 @@ Return the entity name.
 ## PlaceholderImageEntity
 
 ```python
-placeholder_image = client.placeholder_image
+placeholder_image = client.PlaceholderImage()
 ```
 
 ### Operations
@@ -139,7 +139,7 @@ placeholder_image = client.placeholder_image
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.placeholder_image.load({"id": "placeholder_image_id"})
+result = client.PlaceholderImage().load({"id": "placeholder_image_id"})
 ```
 
 ### Common Methods
