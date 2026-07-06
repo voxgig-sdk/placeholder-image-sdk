@@ -8,10 +8,12 @@
 export interface Placeholder {
 }
 
-export type PlaceholderLoadMatch = Partial<Placeholder>
+export interface PlaceholderLoadMatch {
+}
 
 export interface PlaceholderImage {
 }
 
-export type PlaceholderImageLoadMatch = Partial<PlaceholderImage>
+export interface PlaceholderImageLoadMatch {
+}
 

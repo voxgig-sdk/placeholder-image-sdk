@@ -17,7 +17,7 @@ class Placeholder
 {
 }
 
-/** Match filter for Placeholder#load (any subset of Placeholder fields). */
+/** Request payload for Placeholder#load. */
 class PlaceholderLoadMatch
 {
 }
@@ -27,7 +27,7 @@ class PlaceholderImage
 {
 }
 
-/** Match filter for PlaceholderImage#load (any subset of PlaceholderImage fields). */
+/** Request payload for PlaceholderImage#load. */
 class PlaceholderImageLoadMatch
 {
 }

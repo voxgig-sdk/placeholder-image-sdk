@@ -8,7 +8,7 @@ Complete API reference for the PlaceholderImage Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'placeholder-image_sdk'
+require_relative 'PlaceholderImage_sdk'
 
 client = PlaceholderImageSDK.new(options)
 ```
@@ -100,7 +100,7 @@ placeholder = client.Placeholder
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Placeholder.load({ "id" => "placeholder_id" })
+result = client.Placeholder.load()
 ```
 
 ### Common Methods
@@ -146,7 +146,7 @@ placeholder_image = client.PlaceholderImage
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.PlaceholderImage.load({ "id" => "placeholder_image_id" })
+result = client.PlaceholderImage.load()
 ```
 
 ### Common Methods

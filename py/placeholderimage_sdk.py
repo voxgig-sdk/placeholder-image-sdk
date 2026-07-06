@@ -221,13 +221,13 @@ class PlaceholderImageSDK:
 
 
     def Placeholder(self, data=None) -> "PlaceholderEntity":
-        """Entity factory: client.Placeholder().list({}) / client.Placeholder().load({"id": ...})."""
+        """Entity factory: client.Placeholder().list() / client.Placeholder().load({"id": ...})."""
         from entity.placeholder_entity import PlaceholderEntity
         return PlaceholderEntity(self, data)
 
 
     def PlaceholderImage(self, data=None) -> "PlaceholderImageEntity":
-        """Entity factory: client.PlaceholderImage().list({}) / client.PlaceholderImage().load({"id": ...})."""
+        """Entity factory: client.PlaceholderImage().list() / client.PlaceholderImage().load({"id": ...})."""
         from entity.placeholder_image_entity import PlaceholderImageEntity
         return PlaceholderImageEntity(self, data)
 

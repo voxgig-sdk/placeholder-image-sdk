@@ -104,7 +104,7 @@ placeholder := client.Placeholder(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Placeholder(nil).Load(map[string]any{"id": "placeholder_id"}, nil)
+result, err := client.Placeholder(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -144,7 +144,7 @@ placeholder_image := client.PlaceholderImage(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.PlaceholderImage(nil).Load(map[string]any{"id": "placeholder_image_id"}, nil)
+result, err := client.PlaceholderImage(nil).Load(nil, nil)
 ```
 
 ### Common Methods

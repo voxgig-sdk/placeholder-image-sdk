@@ -12,8 +12,7 @@ import "encoding/json"
 type Placeholder struct {
 }
 
-// PlaceholderLoadMatch mirrors the placeholder fields as an all-optional match
-// filter (Go analog of Partial<Placeholder>).
+// PlaceholderLoadMatch is the typed request payload for Placeholder.LoadTyped.
 type PlaceholderLoadMatch struct {
 }
 
@@ -21,8 +20,7 @@ type PlaceholderLoadMatch struct {
 type PlaceholderImage struct {
 }
 
-// PlaceholderImageLoadMatch mirrors the placeholder_image fields as an all-optional match
-// filter (Go analog of Partial<PlaceholderImage>).
+// PlaceholderImageLoadMatch is the typed request payload for PlaceholderImage.LoadTyped.
 type PlaceholderImageLoadMatch struct {
 }
 

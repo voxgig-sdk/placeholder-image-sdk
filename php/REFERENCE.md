@@ -8,7 +8,7 @@ Complete API reference for the PlaceholderImage PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/placeholder-image_sdk.php';
+require_once __DIR__ . '/placeholderimage_sdk.php';
 
 $client = new PlaceholderImageSDK($options);
 ```
@@ -49,11 +49,11 @@ Create a new `PlaceholderEntity` instance. Pass `null` for no initial data.
 
 Create a new `PlaceholderImageEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): PlaceholderImageUtility`
 
 Return a copy of the SDK utility object.
 
@@ -99,24 +99,24 @@ $placeholder = $client->Placeholder();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Placeholder()->load(["id" => "placeholder_id"]);
+$result = $client->Placeholder()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -125,7 +125,7 @@ Set the entity match criteria.
 Create a new `PlaceholderEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -145,24 +145,24 @@ $placeholder_image = $client->PlaceholderImage();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->PlaceholderImage()->load(["id" => "placeholder_image_id"]);
+$result = $client->PlaceholderImage()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -171,7 +171,7 @@ Set the entity match criteria.
 Create a new `PlaceholderImageEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

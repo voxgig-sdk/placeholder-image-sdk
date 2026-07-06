@@ -8,7 +8,7 @@ Complete API reference for the PlaceholderImage Python SDK.
 ### Constructor
 
 ```python
-from placeholder-image_sdk import PlaceholderImageSDK
+from placeholderimage_sdk import PlaceholderImageSDK
 
 client = PlaceholderImageSDK(options)
 ```
@@ -94,7 +94,7 @@ placeholder = client.Placeholder()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Placeholder().load({"id": "placeholder_id"})
+result = client.Placeholder().load()
 ```
 
 ### Common Methods
@@ -139,7 +139,7 @@ placeholder_image = client.PlaceholderImage()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.PlaceholderImage().load({"id": "placeholder_image_id"})
+result = client.PlaceholderImage().load()
 ```
 
 ### Common Methods

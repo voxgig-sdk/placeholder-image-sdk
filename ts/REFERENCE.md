@@ -131,7 +131,7 @@ const placeholder = client.Placeholder()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Placeholder().load({ id: 'placeholder_id' })
+const result = await client.Placeholder().load()
 ```
 
 ### Common Methods
@@ -175,7 +175,7 @@ const placeholder_image = client.PlaceholderImage()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.PlaceholderImage().load({ id: 'placeholder_image_id' })
+const result = await client.PlaceholderImage().load()
 ```
 
 ### Common Methods
