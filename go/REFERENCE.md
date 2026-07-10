@@ -95,6 +95,7 @@ same parameters as `Direct()`.
 
 ```go
 placeholder := client.Placeholder(nil)
+fmt.Println(placeholder.GetName()) // "placeholder"
 ```
 
 ### Operations
@@ -105,6 +106,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Placeholder(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -134,7 +139,8 @@ Return the entity name.
 ## PlaceholderImageEntity
 
 ```go
-placeholder_image := client.PlaceholderImage(nil)
+placeholderImage := client.PlaceholderImage(nil)
+fmt.Println(placeholderImage.GetName()) // "placeholder_image"
 ```
 
 ### Operations
@@ -145,6 +151,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.PlaceholderImage(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

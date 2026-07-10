@@ -301,7 +301,7 @@ fmt.Println(placeholder) // the loaded record
 
 ### PlaceholderImage
 
-Create an instance: `placeholder_image := client.PlaceholderImage(nil)`
+Create an instance: `placeholderImage := client.PlaceholderImage(nil)`
 
 #### Operations
 
@@ -312,11 +312,11 @@ Create an instance: `placeholder_image := client.PlaceholderImage(nil)`
 #### Example: Load
 
 ```go
-placeholder_image, err := client.PlaceholderImage(nil).Load(nil, nil)
+placeholderImage, err := client.PlaceholderImage(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(placeholder_image) // the loaded record
+fmt.Println(placeholderImage) // the loaded record
 ```
 
 

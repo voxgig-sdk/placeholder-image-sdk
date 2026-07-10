@@ -16,10 +16,10 @@ main: {
           url: "https://sodeom.com"
         }
       ]
+      summary: "Provides downloadable placeholder images with caching capabilities."
       termsOfService: "https://sodeom.com"
       title: "Placeholder Image API"
       version: "1.0.0"
+      website: "https://sodeom.com/apis/placeholder"
     }
   }
-}
-
