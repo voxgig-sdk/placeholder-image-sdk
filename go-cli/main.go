@@ -27,7 +27,20 @@ func main() {
 }
 
 func run(args []string, in io.Reader, out, errOut io.Writer) int {
-	client := sdk.NewPlaceholderImageSDK(nil)
+	// Configure from the environment: PLACEHOLDER_IMAGE_APIKEY carries the API key and
+	// PLACEHOLDER_IMAGE_BASE optionally overrides the API base URL (e.g. production).
+	// Both injectable by a secrets vault. Unset -> nil config defaults.
+	var opts map[string]any
+	if apikey := os.Getenv("PLACEHOLDER_IMAGE_APIKEY"); apikey != "" {
+		opts = map[string]any{"apikey": apikey}
+	}
+	if base := os.Getenv("PLACEHOLDER_IMAGE_BASE"); base != "" {
+		if opts == nil {
+			opts = map[string]any{}
+		}
+		opts["base"] = base
+	}
+	client := sdk.NewPlaceholderImageSDK(opts)
 
 	r, err := eng.NewRegistry()
 	if err != nil {
