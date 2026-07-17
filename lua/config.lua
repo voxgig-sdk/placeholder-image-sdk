@@ -1,4 +1,4 @@
--- ProjectName SDK configuration
+-- PlaceholderImage SDK configuration
 
 local function make_config()
   return {
