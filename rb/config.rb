@@ -56,6 +56,7 @@ module PlaceholderImageConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/placeholder",
                   "parts" => [
@@ -113,6 +114,7 @@ module PlaceholderImageConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/placeholder/url",
                   "parts" => [

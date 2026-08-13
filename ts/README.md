@@ -121,7 +121,8 @@ Create a mock client for unit testing — no server required:
 const client = PlaceholderImageSDK.test()
 
 const placeholder = await client.Placeholder().load()
-// placeholder is a bare entity populated with mock response data
+// placeholder is the entity, populated with mock response data
+// — call placeholder.data() for the record itself
 console.log(placeholder)
 ```
 

@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import PlaceholderImageSDK
-from core.error import PlaceholderImageError
-from core.result import PlaceholderImageResult
-from core.response import PlaceholderImageResponse
-from core.spec import PlaceholderImageSpec
-from feature.base_feature import PlaceholderImageBaseFeature
+from projectname_sdk.core.error import PlaceholderImageError
+from projectname_sdk.core.result import PlaceholderImageResult
+from projectname_sdk.core.response import PlaceholderImageResponse
+from projectname_sdk.core.spec import PlaceholderImageSpec
+from projectname_sdk.feature.base_feature import PlaceholderImageBaseFeature
 
 
 def _client():

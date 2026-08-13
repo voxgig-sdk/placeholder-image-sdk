@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from placeholderimage_sdk.utility.voxgig_struct import voxgig_struct as vs
 from placeholderimage_sdk import PlaceholderImageSDK
-from core import helpers
+from placeholderimage_sdk.core import helpers
 from test import runner
 
 
@@ -61,11 +61,11 @@ def _placeholder_image_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "PLACEHOLDERIMAGE_TEST_PLACEHOLDER_IMAGE_ENTID": {},
-        "PLACEHOLDERIMAGE_TEST_LIVE": "FALSE",
+        "PLACEHOLDER_IMAGE_TEST_PLACEHOLDER_IMAGE_ENTID": {},
+        "PLACEHOLDER_IMAGE_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("PLACEHOLDERIMAGE_TEST_LIVE") == "TRUE"
+    live = env.get("PLACEHOLDER_IMAGE_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

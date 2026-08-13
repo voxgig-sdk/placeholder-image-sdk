@@ -34,7 +34,7 @@ client = PlaceholderImageSDK.new
 
 ```ruby
 begin
-  # load returns the bare Placeholder record (raises on error).
+  # load returns the ENTITY — call data_get for the Placeholder record (raises on error).
   placeholder = client.Placeholder.load()
   puts placeholder
 rescue => err
@@ -117,7 +117,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = PlaceholderImageSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 placeholder = client.Placeholder.load()
 puts placeholder
 ```
@@ -267,7 +268,7 @@ Create an instance: `placeholder = client.Placeholder`
 #### Example: Load
 
 ```ruby
-# load returns the bare Placeholder record (raises on error).
+# load returns the ENTITY — call data_get for the Placeholder record (raises on error).
 placeholder = client.Placeholder.load()
 ```
 
@@ -285,7 +286,7 @@ Create an instance: `placeholder_image = client.PlaceholderImage`
 #### Example: Load
 
 ```ruby
-# load returns the bare PlaceholderImage record (raises on error).
+# load returns the ENTITY — call data_get for the PlaceholderImage record (raises on error).
 placeholder_image = client.PlaceholderImage.load()
 ```
 

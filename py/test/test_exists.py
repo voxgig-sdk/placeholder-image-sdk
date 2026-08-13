@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# PlaceholderImage SDK exists test
 
 import pytest
 from placeholderimage_sdk import PlaceholderImageSDK

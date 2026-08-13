@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'PlaceholderImage',
   }
 
 
@@ -87,6 +87,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/placeholder",
               "parts": [
@@ -144,6 +145,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/placeholder/url",
               "parts": [

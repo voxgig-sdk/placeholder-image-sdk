@@ -26,8 +26,8 @@ import {
 describe('PlaceholderEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when PLACEHOLDERIMAGE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('PLACEHOLDERIMAGE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when PLACEHOLDER_IMAGE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('PLACEHOLDER_IMAGE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = PlaceholderImageSDK.test()
@@ -62,7 +62,7 @@ describe('PlaceholderEntity', async () => {
     // LOAD
     const placeholder_ref01_ent = client.Placeholder()
     const placeholder_ref01_match_dt0: any = {}
-    const placeholder_ref01_data_dt0 = await placeholder_ref01_ent.load(placeholder_ref01_match_dt0)
+    const placeholder_ref01_data_dt0 = (await placeholder_ref01_ent.load(placeholder_ref01_match_dt0)).data()
     assert(null != placeholder_ref01_data_dt0)
 
 

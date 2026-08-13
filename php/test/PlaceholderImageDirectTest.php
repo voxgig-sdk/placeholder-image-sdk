@@ -71,11 +71,11 @@ function placeholder_image_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "PLACEHOLDERIMAGE_TEST_PLACEHOLDER_IMAGE_ENTID" => [],
-        "PLACEHOLDERIMAGE_TEST_LIVE" => "FALSE",
+        "PLACEHOLDER_IMAGE_TEST_PLACEHOLDER_IMAGE_ENTID" => [],
+        "PLACEHOLDER_IMAGE_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["PLACEHOLDERIMAGE_TEST_LIVE"] === "TRUE";
+    $live = $env["PLACEHOLDER_IMAGE_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

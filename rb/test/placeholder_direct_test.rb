@@ -65,11 +65,11 @@ def placeholder_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "PLACEHOLDERIMAGE_TEST_PLACEHOLDER_ENTID" => {},
-    "PLACEHOLDERIMAGE_TEST_LIVE" => "FALSE",
+    "PLACEHOLDER_IMAGE_TEST_PLACEHOLDER_ENTID" => {},
+    "PLACEHOLDER_IMAGE_TEST_LIVE" => "FALSE",
   })
 
-  live = env["PLACEHOLDERIMAGE_TEST_LIVE"] == "TRUE"
+  live = env["PLACEHOLDER_IMAGE_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

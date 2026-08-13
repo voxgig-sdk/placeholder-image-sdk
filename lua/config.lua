@@ -55,6 +55,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/placeholder",
                 ["parts"] = {
@@ -112,6 +113,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/placeholder/url",
                 ["parts"] = {

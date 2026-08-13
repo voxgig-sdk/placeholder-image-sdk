@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import PlaceholderImageControl
-from core.error import PlaceholderImageError
-from core.result import PlaceholderImageResult
-from core.spec import PlaceholderImageSpec
+from placeholderimage_sdk.config import make_config
+from placeholderimage_sdk.features import _make_feature
+from placeholderimage_sdk.core.control import PlaceholderImageControl
+from placeholderimage_sdk.core.error import PlaceholderImageError
+from placeholderimage_sdk.core.result import PlaceholderImageResult
+from placeholderimage_sdk.core.spec import PlaceholderImageSpec
 
 
 # True when this SDK was generated with the named feature.

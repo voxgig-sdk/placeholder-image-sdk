@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = PlaceholderImageSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = PlaceholderImageSDK.test({
+  entity: {
+    placeholder: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const placeholder = await client.Placeholder().load()
-// placeholder is a bare Placeholder populated with mock data
+// placeholder is the Placeholder entity, populated with mock data
+// — call placeholder.data() for the record itself
 console.log(placeholder)
 ```
 
@@ -183,7 +192,7 @@ require_once 'placeholderimage_sdk.php';
 $client = new PlaceholderImageSDK();
 
 
-// Load a specific placeholder (returns the bare record; throws on error)
+// Load a specific placeholder (returns the ENTITY; call data_get() for the record; throws on error)
 $placeholder = $client->Placeholder()->load();
 print_r($placeholder);
 ```
@@ -211,7 +220,7 @@ require_relative "PlaceholderImage_sdk"
 client = PlaceholderImageSDK.new
 
 
-# Load a specific placeholder (returns the bare record; raises on error)
+# Load a specific placeholder (returns the ENTITY; call data_get for the record)
 placeholder = client.Placeholder.load()
 puts placeholder
 ```
@@ -345,6 +354,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://sodeom.com](https://sodeom.com)
 

@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ PlaceholderImageUtility.registrar = ->(u) {
   u.prepare_params = PlaceholderImageUtilities::PrepareParams
   u.prepare_path = PlaceholderImageUtilities::PreparePath
   u.prepare_query = PlaceholderImageUtilities::PrepareQuery
+  u.graphql_body = PlaceholderImageUtilities::GraphqlBody
+  u.graphql_errors = PlaceholderImageUtilities::GraphqlErrors
   u.result_basic = PlaceholderImageUtilities::ResultBasic
   u.result_body = PlaceholderImageUtilities::ResultBody
   u.result_headers = PlaceholderImageUtilities::ResultHeaders

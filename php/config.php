@@ -61,6 +61,7 @@ class PlaceholderImageConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/placeholder',
                   'parts' => [
@@ -118,6 +119,7 @@ class PlaceholderImageConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/placeholder/url',
                   'parts' => [
