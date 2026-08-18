@@ -15,7 +15,7 @@ require_relative "../PlaceholderImage_sdk"
 module PlaceholderImageFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = PlaceholderImageConfig.make_config["feature"]
+    f = PlaceholderImageConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

@@ -28,7 +28,7 @@ class PlaceholderImageSDK
     utility = PlaceholderImageUtility.new
     @_utility = utility
 
-    config = PlaceholderImageConfig.make_config
+    config = PlaceholderImageConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

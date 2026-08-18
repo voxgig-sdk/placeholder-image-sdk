@@ -40,7 +40,7 @@ class PlaceholderImageSDK
         $utility = new PlaceholderImageUtility();
         $this->_utility = $utility;
 
-        $config = PlaceholderImageConfig::make_config();
+        $config = PlaceholderImageConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,
