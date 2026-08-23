@@ -33,6 +33,9 @@ class PlaceholderImageConfig
         return [
             "main" => [
                 "name" => "PlaceholderImage",
+                "slug" => "placeholder-image",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [

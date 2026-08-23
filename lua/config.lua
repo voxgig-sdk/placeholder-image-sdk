@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "PlaceholderImage",
+      slug = "placeholder-image",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
