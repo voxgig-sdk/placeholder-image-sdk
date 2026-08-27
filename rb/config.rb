@@ -28,6 +28,7 @@ module PlaceholderImageConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
