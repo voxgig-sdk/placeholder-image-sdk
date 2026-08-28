@@ -9,10 +9,14 @@
 ---@class Placeholder
 
 ---@class PlaceholderLoadMatch
+---@field page? number
+---@field q string
 
 ---@class PlaceholderImage
 
 ---@class PlaceholderImageLoadMatch
+---@field page? number
+---@field q string
 
 local M = {}
 

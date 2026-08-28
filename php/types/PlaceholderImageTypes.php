@@ -20,6 +20,8 @@ class Placeholder
 /** Request payload for Placeholder#load. */
 class PlaceholderLoadMatch
 {
+    public ?int $page = null;
+    public string $q;
 }
 
 /** PlaceholderImage entity data model. */
@@ -30,5 +32,7 @@ class PlaceholderImage
 /** Request payload for PlaceholderImage#load. */
 class PlaceholderImageLoadMatch
 {
+    public ?int $page = null;
+    public string $q;
 }
 

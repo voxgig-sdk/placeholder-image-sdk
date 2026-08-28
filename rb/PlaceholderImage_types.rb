@@ -13,14 +13,32 @@ class Placeholder
 end
 
 # Request payload for Placeholder#load.
-class PlaceholderLoadMatch
-end
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+#
+# @!attribute [rw] q
+#   @return [String]
+PlaceholderLoadMatch = Struct.new(
+  :page,
+  :q,
+  keyword_init: true
+)
 
 # PlaceholderImage entity data model.
 class PlaceholderImage
 end
 
 # Request payload for PlaceholderImage#load.
-class PlaceholderImageLoadMatch
-end
+#
+# @!attribute [rw] page
+#   @return [Integer, nil]
+#
+# @!attribute [rw] q
+#   @return [String]
+PlaceholderImageLoadMatch = Struct.new(
+  :page,
+  :q,
+  keyword_init: true
+)
 

@@ -18,6 +18,8 @@ type Placeholder struct {
 
 // PlaceholderLoadMatch is the typed request payload for Placeholder.LoadTyped.
 type PlaceholderLoadMatch struct {
+	Page *int `json:"page,omitempty"`
+	Q string `json:"q"`
 }
 
 // PlaceholderImage is the typed data model for the placeholder_image entity.
@@ -26,6 +28,8 @@ type PlaceholderImage struct {
 
 // PlaceholderImageLoadMatch is the typed request payload for PlaceholderImage.LoadTyped.
 type PlaceholderImageLoadMatch struct {
+	Page *int `json:"page,omitempty"`
+	Q string `json:"q"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

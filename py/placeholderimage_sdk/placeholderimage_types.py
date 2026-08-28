@@ -20,13 +20,21 @@ class Placeholder(TypedDict):
     pass
 
 
-class PlaceholderLoadMatch(TypedDict):
-    pass
+class PlaceholderLoadMatchRequired(TypedDict):
+    q: str
+
+
+class PlaceholderLoadMatch(PlaceholderLoadMatchRequired, total=False):
+    page: int
 
 
 class PlaceholderImage(TypedDict):
     pass
 
 
-class PlaceholderImageLoadMatch(TypedDict):
-    pass
+class PlaceholderImageLoadMatchRequired(TypedDict):
+    q: str
+
+
+class PlaceholderImageLoadMatch(PlaceholderImageLoadMatchRequired, total=False):
+    page: int

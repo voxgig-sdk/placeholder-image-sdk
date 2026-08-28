@@ -42,7 +42,7 @@ client = PlaceholderImageSDK()
 
 ```python
 try:
-    placeholder = client.Placeholder().load()
+    placeholder = client.Placeholder().load({"q": "example_q"})
     print(placeholder)
 except Exception as err:
     print(f"load failed: {err}")
@@ -55,7 +55,7 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    placeholder = client.Placeholder().load()
+    placeholder = client.Placeholder().load({"q": "example"})
     print(placeholder)
 except Exception as err:
     print(f"load failed: {err}")
@@ -124,7 +124,7 @@ client = PlaceholderImageSDK.test()
 
 # Entity ops return the ENTITY and raises on error;
 # call data_get() for the record.
-placeholder = client.Placeholder().load()
+placeholder = client.Placeholder().load({"q": "example"})
 # placeholder contains the mock response record
 ```
 
@@ -274,7 +274,7 @@ Create an instance: `placeholder = client.Placeholder()`
 #### Example: Load
 
 ```python
-placeholder = client.Placeholder().load()
+placeholder = client.Placeholder().load({"q": "q"})
 ```
 
 
@@ -291,8 +291,31 @@ Create an instance: `placeholder_image = client.PlaceholderImage()`
 #### Example: Load
 
 ```python
-placeholder_image = client.PlaceholderImage().load()
+placeholder_image = client.PlaceholderImage().load({"q": "q"})
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -371,7 +394,7 @@ stores the returned data and match criteria internally.
 
 ```python
 placeholder = client.Placeholder()
-placeholder.load()
+placeholder.load({"q": "example"})
 
 # placeholder.data_get() now returns the placeholder data from the last load
 # placeholder.match_get() returns the last match criteria

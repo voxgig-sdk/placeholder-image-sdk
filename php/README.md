@@ -36,7 +36,7 @@ $client = new PlaceholderImageSDK();
 ```php
 try {
     // load() returns the ENTITY — call data_get() for the Placeholder record (throws on error).
-    $placeholder = $client->Placeholder()->load();
+    $placeholder = $client->Placeholder()->load(["q" => "example_q"]);
     print_r($placeholder);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -51,7 +51,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $placeholder = $client->Placeholder()->load();
+    $placeholder = $client->Placeholder()->load(["q" => "example"]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -125,7 +125,7 @@ $client = PlaceholderImageSDK::test();
 
 // Entity ops return the ENTITY (throws on error);
 // call data_get() for the mock record.
-$placeholder = $client->Placeholder()->load();
+$placeholder = $client->Placeholder()->load(["q" => "example"]);
 print_r($placeholder);
 ```
 
@@ -279,7 +279,7 @@ Create an instance: `$placeholder = $client->Placeholder();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the Placeholder record (throws on error).
-$placeholder = $client->Placeholder()->load();
+$placeholder = $client->Placeholder()->load(["q" => "q"]);
 ```
 
 
@@ -297,8 +297,31 @@ Create an instance: `$placeholder_image = $client->PlaceholderImage();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the PlaceholderImage record (throws on error).
-$placeholder_image = $client->PlaceholderImage()->load();
+$placeholder_image = $client->PlaceholderImage()->load(["q" => "q"]);
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -378,7 +401,7 @@ stores the returned data and match criteria internally.
 
 ```php
 $placeholder = $client->Placeholder();
-$placeholder->load();
+$placeholder->load(["q" => "example"]);
 
 // $placeholder->data_get() now returns the placeholder data from the last load
 // $placeholder->match_get() returns the last match criteria

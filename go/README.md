@@ -51,7 +51,7 @@ func main() {
     client := sdk.New()
 
     // Load a single placeholder — the value is the loaded record.
-    placeholder, err := client.Placeholder(nil).Load(nil, nil)
+    placeholder, err := client.Placeholder(nil).Load(map[string]any{"q": "example_q"}, nil)
     if err != nil {
         panic(err)
     }
@@ -66,7 +66,7 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-placeholder, err := client.Placeholder(nil).Load(nil, nil)
+placeholder, err := client.Placeholder(nil).Load(map[string]any{"q": "example"}, nil)
 if err != nil {
     // handle err
     return
@@ -136,7 +136,7 @@ Create a mock client for unit testing — no server required:
 client := sdk.Test()
 
 placeholder, err := client.Placeholder(nil).Load(
-    nil, nil,
+    map[string]any{"q": "example"}, nil,
 )
 if err != nil {
     panic(err)
@@ -291,7 +291,7 @@ Create an instance: `placeholder := client.Placeholder(nil)`
 #### Example: Load
 
 ```go
-placeholder, err := client.Placeholder(nil).Load(nil, nil)
+placeholder, err := client.Placeholder(nil).Load(map[string]any{"q": "q"}, nil)
 if err != nil {
     panic(err)
 }
@@ -312,12 +312,35 @@ Create an instance: `placeholderImage := client.PlaceholderImage(nil)`
 #### Example: Load
 
 ```go
-placeholderImage, err := client.PlaceholderImage(nil).Load(nil, nil)
+placeholderImage, err := client.PlaceholderImage(nil).Load(map[string]any{"q": "q"}, nil)
 if err != nil {
     panic(err)
 }
 fmt.Println(placeholderImage) // the loaded record
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -394,7 +417,7 @@ stores the returned data and match criteria internally.
 
 ```go
 placeholder := client.Placeholder(nil)
-placeholder.Load(nil, nil)
+placeholder.Load(map[string]any{"q": "example"}, nil)
 
 // placeholder.Data() now returns the placeholder data from the last load
 // placeholder.Match() returns the last match criteria
