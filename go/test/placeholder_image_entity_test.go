@@ -50,7 +50,7 @@ func TestPlaceholderImageEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		placeholderImageRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.placeholder_image", setup.data)))
+		placeholderImageRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.placeholder_image")))
 		var placeholderImageRef01Data map[string]any
 		if len(placeholderImageRef01DataRaw) > 0 {
 			placeholderImageRef01Data = core.ToMapAny(placeholderImageRef01DataRaw[0][1])
@@ -97,7 +97,7 @@ func placeholder_imageBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"placeholder_image01", "placeholder_image02", "placeholder_image03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -125,10 +125,22 @@ func placeholder_imageBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["PLACEHOLDER_IMAGE_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewPlaceholderImageSDK(core.ToMapAny(mergedOpts))
 	}

@@ -87,8 +87,10 @@ class PlaceholderImageConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/placeholder',
-                  'parts' => [
-                    'placeholder',
+                  'segments' => [
+                    [
+                      'lit' => 'placeholder',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -99,6 +101,9 @@ class PlaceholderImageConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'placeholder',
                   ],
                 ],
               ],
@@ -139,9 +144,13 @@ class PlaceholderImageConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/placeholder/url',
-                  'parts' => [
-                    'placeholder',
-                    'url',
+                  'segments' => [
+                    [
+                      'lit' => 'placeholder',
+                    ],
+                    [
+                      'lit' => 'url',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -152,6 +161,10 @@ class PlaceholderImageConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'placeholder',
+                    'url',
                   ],
                 ],
               ],

@@ -73,8 +73,10 @@ module PlaceholderImageConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/placeholder",
-                  "parts" => [
-                    "placeholder",
+                  "segments" => [
+                    {
+                      "lit" => "placeholder",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -86,6 +88,9 @@ module PlaceholderImageConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "placeholder",
+                  ],
                 },
               ],
             },
@@ -125,9 +130,13 @@ module PlaceholderImageConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/placeholder/url",
-                  "parts" => [
-                    "placeholder",
-                    "url",
+                  "segments" => [
+                    {
+                      "lit" => "placeholder",
+                    },
+                    {
+                      "lit" => "url",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -139,6 +148,10 @@ module PlaceholderImageConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "placeholder",
+                    "url",
+                  ],
                 },
               ],
             },

@@ -32,8 +32,10 @@ main: kit: entity: placeholder: {
           }
           method: "GET"
           orig: "/placeholder"
-          parts: [
-            "placeholder"
+          segments: [
+            {
+              lit: "placeholder"
+            }
           ]
           select: {
             exist: [

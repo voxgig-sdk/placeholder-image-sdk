@@ -32,9 +32,13 @@ main: kit: entity: placeholder_image: {
           }
           method: "GET"
           orig: "/placeholder/url"
-          parts: [
-            "placeholder"
-            "url"
+          segments: [
+            {
+              lit: "placeholder"
+            }
+            {
+              lit: "url"
+            }
           ]
           select: {
             exist: [
