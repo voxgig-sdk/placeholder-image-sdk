@@ -105,7 +105,7 @@ local result, err = client:Placeholder():load({ q = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/placeholder-image` | publish pending — [install from git tag](https://github.com/voxgig-sdk/placeholder-image-sdk/releases) |
+| TypeScript | `@voxgig-sdk/placeholder-image-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/placeholder-image-sdk/releases) |
 | Python | `voxgig-sdk-placeholder-image` | publish pending — [install from git tag](https://github.com/voxgig-sdk/placeholder-image-sdk/releases) |
 | PHP | `voxgig-sdk/placeholder-image` | publish pending — [install from git tag](https://github.com/voxgig-sdk/placeholder-image-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/placeholder-image-sdk/go` | `go get github.com/voxgig-sdk/placeholder-image-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:Placeholder():load({ q = "example" })
 ### TypeScript
 
 ```ts
-import { PlaceholderImageSDK } from '@voxgig-sdk/placeholder-image'
+import { PlaceholderImageSDK } from '@voxgig-sdk/placeholder-image-sdk'
 
 const client = new PlaceholderImageSDK()
 

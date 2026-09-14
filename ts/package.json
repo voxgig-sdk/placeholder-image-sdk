@@ -1,5 +1,5 @@
 {
-  "name": "@voxgig-sdk/placeholder-image",
+  "name": "@voxgig-sdk/placeholder-image-sdk",
   "version": "0.0.1",
   "description": "Unofficial generated TypeScript SDK for the Placeholder Image public API. Not affiliated with or endorsed by the upstream API provider.",
   "keywords": [

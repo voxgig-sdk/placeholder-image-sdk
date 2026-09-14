@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { PlaceholderImageSDK } from '@voxgig-sdk/placeholder-image'
+import { PlaceholderImageSDK } from '@voxgig-sdk/placeholder-image-sdk'
 
 const client = new PlaceholderImageSDK()
 ```
@@ -421,7 +421,7 @@ placeholder-image/
 Import the SDK from the package root:
 
 ```ts
-import { PlaceholderImageSDK } from '@voxgig-sdk/placeholder-image'
+import { PlaceholderImageSDK } from '@voxgig-sdk/placeholder-image-sdk'
 ```
 
 ### Entity state
