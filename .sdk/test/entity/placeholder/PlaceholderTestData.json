@@ -16,5 +16,68 @@
     "placeholder": {
       "placeholder_ref01": {}
     }
+  },
+  "requests": {
+    "GET /placeholder": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getPlaceholderImage",
+        "parameters": [
+          {
+            "description": "Image keyword (for example: mountain)",
+            "example": "mountain",
+            "in": "query",
+            "name": "q",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Pagination page (default 1, minimum 1)",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "default": 1,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "image/*": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              },
+              "text/html": {
+                "example": "HTML help page when q parameter is missing",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Binary image data or help page HTML"
+          },
+          "404": {
+            "content": {
+              "image/png": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "No image found, returns static/not-found.png"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

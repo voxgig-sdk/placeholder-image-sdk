@@ -1,12 +1,18 @@
 # PlaceholderImage SDK feature factory
 
 from placeholderimage_sdk.feature.base_feature import PlaceholderImageBaseFeature
+from placeholderimage_sdk.feature.ratelimit_feature import PlaceholderImageRatelimitFeature
+from placeholderimage_sdk.feature.retry_feature import PlaceholderImageRetryFeature
 from placeholderimage_sdk.feature.test_feature import PlaceholderImageTestFeature
+from placeholderimage_sdk.feature.timeout_feature import PlaceholderImageTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: PlaceholderImageBaseFeature(),
+    "ratelimit": lambda: PlaceholderImageRatelimitFeature(),
+    "retry": lambda: PlaceholderImageRetryFeature(),
     "test": lambda: PlaceholderImageTestFeature(),
+    "timeout": lambda: PlaceholderImageTimeoutFeature(),
 }
 
 
