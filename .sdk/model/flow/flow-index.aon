@@ -1,4 +1,4 @@
 # Flows
 
-@"BasicPlaceholderFlow.aon"
-@"BasicPlaceholderImageFlow.aon"
+@"./BasicPlaceholderFlow.aon"
+@"./BasicPlaceholderImageFlow.aon"

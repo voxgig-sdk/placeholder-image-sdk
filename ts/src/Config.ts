@@ -127,12 +127,12 @@ class Config {
 
     entity: {
       
-      placeholder: {
-      },
-
-      placeholder_image: {
-      },
-
+        placeholder: {
+        },
+  
+        placeholder_image: {
+        },
+  
     }
   }
 
