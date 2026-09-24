@@ -1,0 +1,68 @@
+# Entity: placeholder_image
+
+main: kit: entity: placeholder_image: {
+
+  alias: field: {}
+
+  name: "placeholder_image"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /placeholder/url"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "mountain"
+                k: "query"
+                n: "q"
+                or: "q"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/placeholder/url"
+          q: {
+            exist: [
+              "page"
+              "q"
+            ]
+          }
+          s: [
+            {
+              lit: "placeholder"
+            }
+            {
+              lit: "url"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

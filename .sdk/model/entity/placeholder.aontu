@@ -1,0 +1,65 @@
+# Entity: placeholder
+
+main: kit: entity: placeholder: {
+
+  alias: field: {}
+
+  name: "placeholder"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /placeholder"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "mountain"
+                k: "query"
+                n: "q"
+                or: "q"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/placeholder"
+          q: {
+            exist: [
+              "page"
+              "q"
+            ]
+          }
+          s: [
+            {
+              lit: "placeholder"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

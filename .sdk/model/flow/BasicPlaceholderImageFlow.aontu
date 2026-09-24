@@ -1,0 +1,28 @@
+# BasicPlaceholderImageFlow
+
+main: kit: flow: BasicPlaceholderImageFlow:
+{
+  entity: "placeholder_image",
+  kind: "basic",
+  name: "BasicPlaceholderImageFlow",
+  step: [
+    {
+      i: {
+        ref: "placeholder_image_ref01",
+        srcdatavar: "placeholder_image_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-placeholder_image_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPlaceholderImageFlow"
+}

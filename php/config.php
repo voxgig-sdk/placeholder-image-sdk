@@ -119,25 +119,6 @@ class PlaceholderImageConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 1,
-                        'kind' => 'query',
-                        'name' => 'page',
-                        'orig' => 'page',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => 'mountain',
-                        'kind' => 'query',
-                        'name' => 'q',
-                        'orig' => 'q',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/placeholder',
@@ -146,18 +127,38 @@ class PlaceholderImageConfig
                       'lit' => 'placeholder',
                     ],
                   ],
+                  'parts' => [
+                    'placeholder',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'page',
+                        'orig' => 'page',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 1,
+                      ],
+                      [
+                        'name' => 'q',
+                        'orig' => 'q',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'reqd' => true,
+                        'example' => 'mountain',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'page',
                       'q',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'placeholder',
                   ],
                 ],
               ],
@@ -176,25 +177,6 @@ class PlaceholderImageConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 1,
-                        'kind' => 'query',
-                        'name' => 'page',
-                        'orig' => 'page',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => 'mountain',
-                        'kind' => 'query',
-                        'name' => 'q',
-                        'orig' => 'q',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/placeholder/url',
@@ -206,19 +188,39 @@ class PlaceholderImageConfig
                       'lit' => 'url',
                     ],
                   ],
+                  'parts' => [
+                    'placeholder',
+                    'url',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'page',
+                        'orig' => 'page',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 1,
+                      ],
+                      [
+                        'name' => 'q',
+                        'orig' => 'q',
+                        'type' => '`$STRING`',
+                        'kind' => 'query',
+                        'reqd' => true,
+                        'example' => 'mountain',
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'page',
                       'q',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'placeholder',
-                    'url',
                   ],
                 ],
               ],
