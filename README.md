@@ -106,11 +106,11 @@ local result, err = client:Placeholder():load({ q = "example" })
 | Language | Package | Install |
 | --- | --- | --- |
 | TypeScript | `@voxgig-sdk/placeholder-image-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/placeholder-image-sdk/tags) |
-| Python | `voxgig-sdk-placeholder-image` | publish pending — [install from git tag](https://github.com/voxgig-sdk/placeholder-image-sdk/tags) |
-| PHP | `voxgig-sdk/placeholder-image` | publish pending — [install from git tag](https://github.com/voxgig-sdk/placeholder-image-sdk/tags) |
+| Python | `voxgig-sdk-placeholder-image-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/placeholder-image-sdk/tags) |
+| PHP | `voxgig-sdk/placeholder-image-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/placeholder-image-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/placeholder-image-sdk/go` | `go get github.com/voxgig-sdk/placeholder-image-sdk/go@latest` |
-| Ruby | `voxgig-sdk-placeholder-image` | publish pending — [install from git tag](https://github.com/voxgig-sdk/placeholder-image-sdk/tags) |
-| Lua | `voxgig-sdk-placeholder-image` | publish pending — [install from git tag](https://github.com/voxgig-sdk/placeholder-image-sdk/tags) |
+| Ruby | `voxgig-sdk-placeholder-image-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/placeholder-image-sdk/tags) |
+| Lua | `voxgig-sdk-placeholder-image-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/placeholder-image-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/placeholder-image-sdk/go-cli` | `go install github.com/voxgig-sdk/placeholder-image-sdk/go-cli/cmd/placeholder-image@latest` |
 | Go MCP server | `github.com/voxgig-sdk/placeholder-image-sdk/go-mcp` | `go get github.com/voxgig-sdk/placeholder-image-sdk/go-mcp@latest` |
 
@@ -341,10 +341,10 @@ forking the SDK.
 
 | Feature | Purpose |
 | --- | --- |
-| **RatelimitFeature** | Client-side rate limiting via a token bucket |
-| **RetryFeature** | Automatic retry of transient failures with exponential backoff |
-| **TestFeature** | In-memory mock transport for testing without a live server |
-| **TimeoutFeature** | Per-request timeout with transport abort |
+| **RatelimitFeature** | Rate limiting |
+| **RetryFeature** | Retry |
+| **TestFeature** | Test transport |
+| **TimeoutFeature** | Timeout |
 
 Pass custom features via the `extend` option at construction time.
 
