@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 PlaceholderImageUtility.registrar = ->(u) {
   u.clean = PlaceholderImageUtilities::Clean
+  u.clean_add = PlaceholderImageUtilities::CleanAdd
+  u.clean_explain = PlaceholderImageUtilities::CleanExplain
   u.done = PlaceholderImageUtilities::Done
   u.make_error = PlaceholderImageUtilities::MakeError
   u.feature_add = PlaceholderImageUtilities::FeatureAdd
