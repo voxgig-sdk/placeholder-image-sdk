@@ -84,9 +84,12 @@ class PlaceholderImageEntity extends PlaceholderImageEntityBase_1.PlaceholderIma
         catch (err) {
             // What a hook throws here must not escape the cleaning below.
             try {
-                fres = featureHook(ctx, 'PreUnexpected');
-                if (fres instanceof Promise) {
-                    await fres;
+                // Once per operation: makeError fires it for its own error.
+                if (!ctx.unexpectedFired) {
+                    fres = featureHook(ctx, 'PreUnexpected');
+                    if (fres instanceof Promise) {
+                        await fres;
+                    }
                 }
             }
             catch (hookerr) {
@@ -98,7 +101,7 @@ class PlaceholderImageEntity extends PlaceholderImageEntityBase_1.PlaceholderIma
             }
             else {
                 // Off-happy-path (throw disabled): typed as any so the method's
-                // Promise<PlaceholderImage> return stays clean under strict null checks.
+                // Promise<PlaceholderImageEntity> return stays clean under strict null checks.
                 return undefined;
             }
         }

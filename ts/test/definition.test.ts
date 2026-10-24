@@ -16,13 +16,28 @@ const PLAN: any[] = [
     "path": "/placeholder",
     "args": [],
     "select": {
-      "page": "v1",
-      "q": "mountain"
+      "q": "mountain",
+      "page": 1
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "image/*",
+      "text/html"
+    ],
     "query": [
       "q",
       "page"
+    ],
+    "queryArgs": [
+      {
+        "name": "page",
+        "wire": "page"
+      },
+      {
+        "name": "q",
+        "wire": "q"
+      }
     ],
     "auth": null,
     "status": 200,
@@ -37,13 +52,27 @@ const PLAN: any[] = [
     "path": "/placeholder/url",
     "args": [],
     "select": {
-      "page": "v1",
-      "q": "mountain"
+      "q": "mountain",
+      "page": 1
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "text/plain"
+    ],
     "query": [
       "q",
       "page"
+    ],
+    "queryArgs": [
+      {
+        "name": "page",
+        "wire": "page"
+      },
+      {
+        "name": "q",
+        "wire": "q"
+      }
     ],
     "auth": null,
     "status": 200,

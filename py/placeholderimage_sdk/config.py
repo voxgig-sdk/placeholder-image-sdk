@@ -96,6 +96,7 @@ def make_config():
         },
         "optspec": {
           "clearTimer": "`$FUNCTION`",
+          "now": "`$FUNCTION`",
           "setTimer": "`$FUNCTION`",
         },
         "strict": False,
@@ -159,9 +160,19 @@ def make_config():
                 },
                 "select": {
                   "exist": [
-                    "page",
                     "q",
                   ],
+                },
+                "response": {
+                  "alternatives": [
+                    {
+                      "kind": "raw",
+                      "media": "text/html",
+                    },
+                  ],
+                  "binary": True,
+                  "kind": "raw",
+                  "media": "image/*",
                 },
               },
             ],
@@ -221,9 +232,12 @@ def make_config():
                 },
                 "select": {
                   "exist": [
-                    "page",
                     "q",
                   ],
+                },
+                "response": {
+                  "kind": "raw",
+                  "media": "text/plain",
                 },
               },
             ],

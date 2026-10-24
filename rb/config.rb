@@ -79,6 +79,7 @@ module PlaceholderImageConfig
           },
           "optspec" => {
             "clearTimer" => "`$FUNCTION`",
+            "now" => "`$FUNCTION`",
             "setTimer" => "`$FUNCTION`",
           },
           "strict" => false,
@@ -142,9 +143,19 @@ module PlaceholderImageConfig
                   },
                   "select" => {
                     "exist" => [
-                      "page",
                       "q",
                     ],
+                  },
+                  "response" => {
+                    "alternatives" => [
+                      {
+                        "kind" => "raw",
+                        "media" => "text/html",
+                      },
+                    ],
+                    "binary" => true,
+                    "kind" => "raw",
+                    "media" => "image/*",
                   },
                 },
               ],
@@ -204,9 +215,12 @@ module PlaceholderImageConfig
                   },
                   "select" => {
                     "exist" => [
-                      "page",
                       "q",
                     ],
+                  },
+                  "response" => {
+                    "kind" => "raw",
+                    "media" => "text/plain",
                   },
                 },
               ],

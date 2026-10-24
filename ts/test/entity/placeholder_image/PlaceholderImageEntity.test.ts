@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { PlaceholderImageSDK, BaseFeature, stdutil } from '../../..'
+import { PlaceholderImageSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,18 @@ describe('PlaceholderImageEntity', async () => {
   })
 
 
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = PlaceholderImageSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.PlaceholderImage().load({"page":"x","q":"x"} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.PLACEHOLDER_IMAGE_TEST_LIVE
@@ -51,7 +63,7 @@ describe('PlaceholderImageEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"placeholder_image","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /placeholder/url","source":"openapi3","version":2},"g":{"query":[{"a":true,"ex":1,"k":"query","n":"page","or":"page","r":false,"t":"`$INTEGER`","index$":0},{"a":true,"ex":"mountain","k":"query","n":"q","or":"q","r":true,"t":"`$STRING`","index$":1}]},"k":"http","m":"GET","o":"/placeholder/url","q":{"exist":["page","q"]},"r":{},"s":[{"lit":"placeholder"},{"lit":"url"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"placeholder_image","name__orig":"placeholder_image","Name":"PlaceholderImage","name_":"placeholder_image","name-":"placeholder-image","NAME":"PLACEHOLDER_IMAGE","index$":1}, {"active":true,"entity":"placeholder_image","key$":"BasicPlaceholderImageFlow","kind":"basic","name":"BasicPlaceholderImageFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"placeholder_image_ref01","srcdatavar":"placeholder_image_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-placeholder_image_ref01"}}],"index$":0}]}, 'PlaceholderImage', {"GET /placeholder/url":{"protocol":"http","parameters":[{"name":"q","in":"query","description":"Image keyword (for example: mountain)","required":true,"schema":{"type":"string"},"example":"mountain","index$":0},{"name":"page","in":"query","description":"Pagination page (default 1, minimum 1)","required":false,"schema":{"type":"integer","minimum":1,"default":1},"index$":1}]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"placeholder_image","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /placeholder/url","source":"openapi3","version":2},"g":{"query":[{"a":true,"ex":1,"k":"query","n":"page","or":"page","r":false,"t":"`$INTEGER`","index$":0},{"a":true,"ex":"mountain","k":"query","n":"q","or":"q","r":true,"t":"`$STRING`","index$":1}]},"k":"http","m":"GET","o":"/placeholder/url","q":{"exist":["q"]},"r":{},"rs":{"kind":"raw","media":"text/plain"},"s":[{"lit":"placeholder"},{"lit":"url"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"placeholder_image","name__orig":"placeholder_image","Name":"PlaceholderImage","name_":"placeholder_image","name-":"placeholder-image","NAME":"PLACEHOLDER_IMAGE","index$":1}, {"active":true,"entity":"placeholder_image","key$":"BasicPlaceholderImageFlow","kind":"basic","name":"BasicPlaceholderImageFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"placeholder_image_ref01","srcdatavar":"placeholder_image_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-placeholder_image_ref01"}}],"index$":0}]}, 'PlaceholderImage', {"GET /placeholder/url":{"protocol":"http","parameters":[{"name":"q","in":"query","description":"Image keyword (for example: mountain)","required":true,"schema":{"type":"string"},"example":"mountain","index$":0},{"name":"page","in":"query","description":"Pagination page (default 1, minimum 1)","required":false,"schema":{"type":"integer","minimum":1,"default":1},"index$":1}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,6 +84,12 @@ describe('PlaceholderImageEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

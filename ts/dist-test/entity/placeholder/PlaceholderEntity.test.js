@@ -54,6 +54,14 @@ const utility_1 = require("../../utility");
         const ent = testsdk.Placeholder();
         (0, node_assert_1.default)(null != ent);
     });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.PlaceholderImageSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.Placeholder().load({ "page": "x", "q": "x" }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.PLACEHOLDER_IMAGE_TEST_LIVE;
         for (const op of ['load']) {
@@ -62,7 +70,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": {}, "name": "placeholder", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /placeholder", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": 1, "k": "query", "n": "page", "or": "page", "r": false, "t": "`$INTEGER`", "index$": 0 }, { "a": true, "ex": "mountain", "k": "query", "n": "q", "or": "q", "r": true, "t": "`$STRING`", "index$": 1 }] }, "k": "http", "m": "GET", "o": "/placeholder", "q": { "exist": ["page", "q"] }, "r": {}, "s": [{ "lit": "placeholder" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "placeholder", "name__orig": "placeholder", "Name": "Placeholder", "name_": "placeholder", "name-": "placeholder", "NAME": "PLACEHOLDER", "index$": 0 }, { "active": true, "entity": "placeholder", "key$": "BasicPlaceholderFlow", "kind": "basic", "name": "BasicPlaceholderFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "placeholder_ref01", "srcdatavar": "placeholder_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-placeholder_ref01" } }], "index$": 0 }] }, 'Placeholder', { "GET /placeholder": { "protocol": "http", "parameters": [{ "name": "q", "in": "query", "description": "Image keyword (for example: mountain)", "required": true, "schema": { "type": "string" }, "example": "mountain", "index$": 0 }, { "name": "page", "in": "query", "description": "Pagination page (default 1, minimum 1)", "required": false, "schema": { "type": "integer", "minimum": 1, "default": 1 }, "index$": 1 }] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": {}, "name": "placeholder", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /placeholder", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": 1, "k": "query", "n": "page", "or": "page", "r": false, "t": "`$INTEGER`", "index$": 0 }, { "a": true, "ex": "mountain", "k": "query", "n": "q", "or": "q", "r": true, "t": "`$STRING`", "index$": 1 }] }, "k": "http", "m": "GET", "o": "/placeholder", "q": { "exist": ["q"] }, "r": {}, "rs": { "alternatives": [{ "kind": "raw", "media": "text/html" }], "binary": true, "kind": "raw", "media": "image/*" }, "s": [{ "lit": "placeholder" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "placeholder", "name__orig": "placeholder", "Name": "Placeholder", "name_": "placeholder", "name-": "placeholder", "NAME": "PLACEHOLDER", "index$": 0 }, { "active": true, "entity": "placeholder", "key$": "BasicPlaceholderFlow", "kind": "basic", "name": "BasicPlaceholderFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "placeholder_ref01", "srcdatavar": "placeholder_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-placeholder_ref01" } }], "index$": 0 }] }, 'Placeholder', { "GET /placeholder": { "protocol": "http", "parameters": [{ "name": "q", "in": "query", "description": "Image keyword (for example: mountain)", "required": true, "schema": { "type": "string" }, "example": "mountain", "index$": 0 }, { "name": "page", "in": "query", "description": "Pagination page (default 1, minimum 1)", "required": false, "schema": { "type": "integer", "minimum": 1, "default": 1 }, "index$": 1 }] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -76,6 +84,11 @@ const utility_1 = require("../../utility");
         (0, node_assert_1.default)(null != placeholder_ref01_data_dt0);
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

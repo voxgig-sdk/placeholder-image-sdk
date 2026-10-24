@@ -8,6 +8,19 @@ import { PlaceholderImageEntityBase } from './PlaceholderImageEntityBase';
 import { Utility } from './utility/Utility';
 import { BaseFeature } from './feature/base/BaseFeature';
 declare const stdutil: Utility;
+type DirectResult = {
+    ok: false;
+    err: any;
+    status?: undefined;
+    headers?: undefined;
+    data?: undefined;
+} | {
+    ok: boolean;
+    status: number;
+    headers: any;
+    data: any;
+    err?: any;
+};
 declare class PlaceholderImageSDK {
     _mode: string;
     _options: any;
@@ -18,32 +31,8 @@ declare class PlaceholderImageSDK {
     options(): any;
     utility(): any;
     prepare(fetchargs?: any): Promise<any>;
-    direct(fetchargs?: any): Promise<Error | {
-        ok: boolean;
-        err: any;
-        status?: undefined;
-        headers?: undefined;
-        data?: undefined;
-    } | {
-        ok: boolean;
-        status: number;
-        headers: any;
-        data: any;
-        err?: undefined;
-    }>;
-    _rawRequest(fetchargs?: any): Promise<Error | {
-        ok: boolean;
-        err: any;
-        status?: undefined;
-        headers?: undefined;
-        data?: undefined;
-    } | {
-        ok: boolean;
-        status: number;
-        headers: any;
-        data: any;
-        err?: undefined;
-    }>;
+    direct(fetchargs?: any): Promise<DirectResult>;
+    _rawRequest(fetchargs?: any): Promise<DirectResult>;
     graphql(query: string, variables?: any, ctrl?: any): Promise<any>;
     Placeholder(entopts?: Record<string, any>): PlaceholderEntity;
     PlaceholderImage(entopts?: Record<string, any>): PlaceholderImageEntity;
@@ -57,3 +46,4 @@ declare class PlaceholderImageSDK {
 }
 declare const SDK: typeof PlaceholderImageSDK;
 export { stdutil, config, BaseFeature, PlaceholderImageEntityBase, PlaceholderImageSDK, SDK, };
+export type { DirectResult };

@@ -39,9 +39,19 @@ main: kit: entity: placeholder: {
           o: "/placeholder"
           q: {
             exist: [
-              "page"
               "q"
             ]
+          }
+          rs: {
+            alternatives: [
+              {
+                kind: "raw"
+                media: "text/html"
+              }
+            ]
+            binary: true
+            kind: "raw"
+            media: "image/*"
           }
           s: [
             {

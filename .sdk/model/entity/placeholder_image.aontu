@@ -39,9 +39,12 @@ main: kit: entity: placeholder_image: {
           o: "/placeholder/url"
           q: {
             exist: [
-              "page"
               "q"
             ]
+          }
+          rs: {
+            kind: "raw"
+            media: "text/plain"
           }
           s: [
             {

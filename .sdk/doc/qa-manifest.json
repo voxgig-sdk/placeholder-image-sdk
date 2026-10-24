@@ -3,5 +3,13 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "Binary image data or help page HTML",
+      "Plain text image URL",
+      "Production server",
+      "Provides downloadable placeholder images with caching capabilities. Users can fetch a binary image or a plain text URL based on specific keywords."
+    ]
+  }
 }
